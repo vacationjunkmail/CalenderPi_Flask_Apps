@@ -1,0 +1,13 @@
+[Unit]
+Description=uWsgi instance to start Blueprint Games App http://127.0.0.1/games/.
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/app-games
+ExecStart=/usr/bin/uwsgi games.ini
+
+[Install]
+WantedBy=multi-user.target
+
