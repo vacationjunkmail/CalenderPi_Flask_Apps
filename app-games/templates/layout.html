@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Game Consoles{% endblock %}</title>
+    <link rel="stylesheet" href="/public/css/bootstrap_v3.3.7.min.css">
+    <link rel="stylesheet" href="/public/css/google.Monsterrant.400.400.css">
+    <link rel="stylesheet" href="/public/css/font-awesome.v4.6.3.min.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <script src="/public/js/jquery_v1.12.4.min.js"></script>
+    <script src="/public/js/bootstrap_v3.3.7.min.js"></script>    
+  </head>
+  <body>
+    <!-- Content here -->
+    {% block content %}{% endblock %}
+    <footer>
+      <div class="content-padding">
+        <div class="footer-content">
+          <p>Copyright &copy; Game Consoles Application</p>
+          <div class="social-media-icons">
+            <a href="#"><i class="fa fa-empire"></i></a>
+	    <a href="#"><i class="fa fa-rebel"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

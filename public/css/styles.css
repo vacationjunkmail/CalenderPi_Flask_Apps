@@ -101,10 +101,6 @@ Navbar and Navigation Styles / Overrides
 	background-color: rgba(0,0,0,0.5);
 }
 
-
-
-
-
 /* -----------------------------
 Home Page Posters Styles 
 -------------------------------- */
@@ -118,7 +114,6 @@ Home Page Posters Styles
 	display: inline-block;
 	position: relative;
 }
-
 
 /* Poster Overlay Styles */
 .poster-info-overlay {
@@ -151,9 +146,42 @@ Home Page Posters Styles
 	opacity: 1;
 }
 
-
-
-
+.poster-consoles {
+        width: 30%;
+        //margin-right: 4%;
+        display: inline-block;
+        position: relative;
+}
+/* Poster Overlay Styles */
+.poster-consoles-info-overlay {
+        position: absolute;
+        background: rgba(0,0,0,0.7);
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+        padding: 30px 15px;
+}
+.poster-consoles-info-overlay h3 {
+        text-transform: uppercase;
+        font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: #fff;
+  margin: 0px;
+}
+.poster-consoles-info-overlay h4 {
+        text-transform: uppercase;
+        font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: #fff;
+  margin: 0px;
+  margin-top: 15px;
+}
+.poster-consoles:hover .poster-consoles-info-overlay {
+        opacity: 1;
+}
 
 /* -----------------------------
 Footer Styles 
@@ -229,7 +257,8 @@ Movie-Single Hero Image and Title Styles
 	height: 550px;
 	width: 100%;
 	background-color: #444;
-	background-size: cover;
+	//background-size: cover;
+	background-size:auto;
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
