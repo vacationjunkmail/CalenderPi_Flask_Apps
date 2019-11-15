@@ -12,8 +12,6 @@ body {
 	padding-right: 11%;
 }
 
-
-
 /* --------------------------
 Hero Image / Title Styles 
 ----------------------------- */
@@ -21,8 +19,9 @@ Hero Image / Title Styles
 	height: 550px;
 	width: 100%;
 	background-color: #444;
-	background-image: url('../images/death_star_image.jpg');
-	background-size: cover;
+	background-image: url('../images/PSHome.png');
+	//background-size: cover;
+	background-size: auto;
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
@@ -56,10 +55,6 @@ Hero Image / Title Styles
   font-size: 1.20em;
   letter-spacing: 0.4px;
 }
-
-
-
-
 
 /* ---------------------------------------
 Navbar and Navigation Styles / Overrides 
@@ -231,23 +226,9 @@ footer .social-media-icons a:first-child:hover i {
 	color: #333;
 }
 
-
-
-
-
-
 /* -----------------------------
-
-
 Movie-Single Styles 
-
-
 -------------------------------- */
-
-
-
-
-
 
 /* ---------------------------------------
 Movie-Single Hero Image and Title Styles 
@@ -297,10 +278,6 @@ Movie-Single Hero Image and Title Styles
   letter-spacing: 0.4px;
 }
 
-
-
-
-
 /* ---------------------------------------
 Movie-Single Poster and Description Styles 
 ------------------------------------------ */
@@ -349,16 +326,9 @@ Movie-Single Poster and Description Styles
 	padding-left: 0px;
 }
 
-
-
-
-
 /* -----------------------------
 
-
 Media Queries / Responsive Styles
-
-
 -------------------------------- */
 
 /* Decrease content padding */
@@ -386,7 +356,6 @@ Media Queries / Responsive Styles
 	}
 }
 
-
 /* Two posters per row on smaller devices */
 @media (max-width: 991px) {
 	.poster-wrapper {
@@ -410,7 +379,6 @@ Media Queries / Responsive Styles
 	.poster:nth-child(2n) {
 		margin-right: 0px;
 	}
-
 }
 
 /* Increase width of the hero-title element on Movie-single pages to prevent text from stacking */
@@ -459,7 +427,6 @@ Media Queries / Responsive Styles
 		margin-left: -100px;
 		background-color: rgba(0,0,0,0.5);
 	}
-	
 }
 
 /* Decrease font size and padding of poster overlay on mobile devices */
@@ -487,17 +454,9 @@ Media Queries / Responsive Styles
 		font-size: 0.95em;
 	}
 }
-
-
-
-
-
 /* -----------------------------
 
-
 Page Not Found Template Styles
-
-
 -------------------------------- */
 
 #hero-image-notFound {
