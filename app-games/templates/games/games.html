@@ -4,19 +4,23 @@
 {% endblock %}
 {% include "nav.html" %}
 {% block content %}
-<div id="hero-image">
-	<h1 id="hero-title">{{ title }}</h1>
-</div>
-<div id="posters-wrapper" class="content-padding clearfix">
-{% for row in menu %}
-	<div class="poster-consoles">
-		<a href="{{ row['id'] }}/">
-			<img src="/public/images/{{ row['console_shortname'] }}/{{ row['console_shortname'] }}.png" alt="{{ row['name'] }}" class="img-responsive"/>
-			<div class="poster-consoles-info-overlay">
-				<h3>{{ row['console_shortname'] }}</h3>
-				<h4>View more <i class="fa fa-arrow-right"></i></h4>
-			</div>
-		</a>
-	</div>
-{% endfor %}
+    <div id="hero-image">
+        <h1 id="hero-title">{{ title }}</h1>
+    </div>
+    <div id="posters-wrapper" class="content-padding clearfix">
+        {% for row in menu %}
+	    <div class="poster-consoles">
+	        <a href="{{ row['id'] }}/">
+		    <img src="/public/images/{{ row['console_shortname'] }}/{{ row['console_shortname'] }}.png" alt="{{ row['name'] }}" class="img-responsive"/>
+		    <div class="poster-consoles-info-overlay">
+		        <h3>{{ row['console_shortname'] }}</h3>
+			<h4>View more <i class="fa fa-arrow-right"></i></h4>
+		    </div>
+	        </a>
+	    </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block footericons %}
+    <img src = "/public/images/{{ shortname }}_logo.png" alt = "{{ shortname }} logo image" />
 {% endblock %}

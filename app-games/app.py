@@ -1,6 +1,7 @@
 import sys
 sys.path.insert(-1,'/usr/local/lib/python3.4/site-packages')
 #sys.path.insert(-1,'/home/pi/.local/lib/python3.4/site-packages')
+#https://www.flaticon.com
 from flask import Flask, jsonify, render_template, request, g, session, flash, redirect,url_for
 
 from routes.games import games
