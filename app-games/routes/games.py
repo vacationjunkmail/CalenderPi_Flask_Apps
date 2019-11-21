@@ -49,7 +49,10 @@ def single_game(console_id,game_id):
 		   from games.game_console as c inner join games.video_games as v on v.console_id = c.id
                    where c.id = %s and v.id = %s;'''
 	results = g.mysql_db.select_params(query,params)
-	return render_template('games/single_game.html',menu = g.menu[1],title = console_results[1][0]['console_name'],shortname = console_results[1][0]['console_shortname'],data = results[1])
+	params = [game_id]
+	query = '''select c.name from games.characters as c inner join games.video_game_and_characters as v on v.character_id =c.id  where video_game_id = %s;'''
+	characters = g.mysql_db.select_params(query,params)
+	return render_template('games/single_game.html',menu = g.menu[1],title = console_results[1][0]['console_name'],shortname = console_results[1][0]['console_shortname'],data = results[1],characters = characters[1])
 
 
 

@@ -5,10 +5,10 @@
 {% include "nav.html" %}
 {% block content %}
     <div id="hero-image-single" style="background-image:url('/public/images/{{ shortname }}/{{ shortname }}_logo.png');">
-        <h1 id="hero-title">{#{ shortname }#}{{ data[0]['name'] }}</h1>
+        <h1 id="hero-title"><a href="../" style="color:#000000">{{ data[0]['name'] }}</a></h1>
     </div>
     <div id="posters-wrapper" class="content-padding clearfix">
-	{{ data[0] }}
+	{#{ data[0] }#}
 	<div class="poster-consoles">
             <img src="/public/images/{{ shortname }}/large/{{ data[0]['large_image'] }}" class="img-responsive" />
         </div>
@@ -20,7 +20,9 @@
             <div class="main-characters">
                 <h2 class="movie-header">Main Characters</h2>
                 <ul>
-                    Loop here for main characters
+                    {% for item in  characters %}
+                        <li>{{ item['name'] }}</li>
+		    {% endfor %}
                 </ul>
             </div>
 	</div>
