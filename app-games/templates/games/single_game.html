@@ -29,6 +29,9 @@
     </div>
 {% endblock %}
 {% block footericons %}
-    <img src = "/public/images/{{ shortname }}/{{ shortname }}_icon.png" alt = "{{ shortname }} logo image" />
+    {% if facebook %}
+	---------------
+    {% endif %}
+    <a href="{{ twitter }}" title="{{ title }} Twitter"><img src = "/public/images/{{ shortname }}/{{ shortname }}_icon.png" alt = "{{ shortname }} logo image" /></a>
 {% endblock %}
 
