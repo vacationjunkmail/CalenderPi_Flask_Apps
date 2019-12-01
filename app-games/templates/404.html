@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}
+    {{ title  }}
+{% endblock %}
+{% include "nav.html" %}
+{% block content %}
+    <div id="hero-image-single" style="background-image:url('/public/images/{{ shortname }}/{{ shortname }}_logo.png');">
+        <h1 id="hero-title">404 Page/h1>
+    </div>
+    <div id="posters-wrapper" class="content-padding clearfix">
+        This is the 404 page
+    </div>
+{% endblock %}
+{% block footericons %}
+{% endblock %}
+
