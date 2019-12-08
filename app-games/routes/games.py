@@ -42,16 +42,23 @@ def single_game(console_id,game_id):
 
 	params = [console_id]
 	game_data = find_game_data(g.menu[1],console_id)
+	header_image = "{}/{}_logo.png".format(game_data[0]['console_shortname'],game_data[0]['console_shortname'])
+	shortname = game_data[0]['console_shortname']
+	title = game_data[0]['console_name']
 	params.append(game_id)
-	query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image
+	query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image,v.header_image
 		   from games.game_console as c inner join games.video_games as v on v.console_id = c.id
                    where c.id = %s and v.id = %s;'''
 	results = g.mysql_db.select_params(query,params)
+
+	if results[1][0]['header_image']:
+		header_image = "{}/header/{}".format(shortname,results[1][0]['header_image'])
+
 	params = [game_id]
 	query = '''select c.name from games.characters as c inner join games.video_game_and_characters as v on v.character_id =c.id  
 		   where video_game_id = %s order by c.order_num,c.name;'''
 	characters = g.mysql_db.select_params(query,params)
-	return render_template('games/single_game.html',menu = g.menu[1],title = game_data[0]['console_name'],shortname = game_data[0]['console_shortname'],data = results[1],characters = characters[1],twitter = game_data[0]['twitter'], facebook = game_data[0]['facebook'])
+	return render_template('games/single_game.html',menu = g.menu[1],title = title,shortname = shortname,data = results[1],characters = characters[1],twitter = game_data[0]['twitter'], facebook = game_data[0]['facebook'],header_image = header_image)
 
 def find_game_data(query,id):
 	data_list = []
