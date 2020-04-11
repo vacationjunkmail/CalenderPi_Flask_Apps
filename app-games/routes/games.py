@@ -46,7 +46,7 @@ def single_game(console_id,game_id):
 	shortname = game_data[0]['console_shortname']
 	title = game_data[0]['console_name']
 	params.append(game_id)
-	query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image,v.header_image
+	query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image,v.header_image,v.game_description
 		   from games.game_console as c inner join games.video_games as v on v.console_id = c.id
                    where c.id = %s and v.id = %s;'''
 	results = g.mysql_db.select_params(query,params)
@@ -56,7 +56,7 @@ def single_game(console_id,game_id):
 
 	params = [game_id]
 	query = '''select c.name from games.characters as c inner join games.video_game_and_characters as v on v.character_id =c.id  
-		   where video_game_id = %s order by c.order_num,c.name;'''
+		   where video_game_id = %s order by c.display_order,c.name;'''
 	characters = g.mysql_db.select_params(query,params)
 	return render_template('games/single_game.html',menu = g.menu[1],title = title,shortname = shortname,data = results[1],characters = characters[1],twitter = game_data[0]['twitter'], facebook = game_data[0]['facebook'],header_image = header_image)
 

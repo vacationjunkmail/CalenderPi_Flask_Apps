@@ -4,7 +4,7 @@
 {% endblock %}
 {% include "nav.html" %}
 {% block content %}
-    <div id="hero-image-single" style='background-image:url("/public/images/{{ header_image}}");'>
+    <div id="hero-image-single" style='background-image:url("/public/images/{{ header_image }}");'>
         <h1 id="hero-title"><a href="../" style="color:#000000">{{ data[0]['name'] }}</a></h1>
     </div>
     <div id="posters-wrapper" class="content-padding clearfix">
@@ -15,7 +15,14 @@
         <div class="description-wrapper">
             <div class="description">
 	        <h2 class="movie-header">Description</h2>
-                <p>{{ data[0]['name'] }} description should go here</p>
+                <p>
+			{% if data[0]['game_description'] | length > 1  %}
+				{{ data[0]['game_description'] | safe }}
+			{% else %}
+				{{ data[0]['name'] }} has no description.
+			{% endif %}
+			
+		</p>
             </div>
             <div class="main-characters">
                 <h2 class="movie-header">Main Characters</h2>
