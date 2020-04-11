@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 for f in /tmp/*log; do
-	truncate -s 0 $f
+	sudo truncate -s 0 $f
 done
