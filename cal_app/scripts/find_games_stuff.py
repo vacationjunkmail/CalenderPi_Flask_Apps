@@ -8,7 +8,7 @@
 import os, datetime, re, sys, time
 from mysql_conn.connect_mysql import get_connection
 
-console_id = 12
+console_id = 9
 select_statement = '''select v.id,v.`name`,g.console_shortname 
 			from games.video_games as v inner join games.game_console as g on g.id=v.console_id 
 			where g.id = {} and (v.small_image ='' or v.large_image = '' or v.small_image is null or v.large_image is null);'''.format(console_id)

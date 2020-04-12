@@ -1,3 +1,11 @@
+Super Mario Bros,9|&|Mario,Luigi,Hammer Bros,Bowser,Princess Toadstool|&|In the Mushroom Kingdom, a tribe of turtle-like creatures known as the Koopa Troopas invade the kingdom and uses the magic of its king, Bowser, to turn its inhabitants, known as the Mushroom People, into inanimate objects such as bricks, stones and horsehair plants. Bowser and his army also kidnap Princess Toadstool
+Super Mario Bros,1|&|Mario,Luigi,Hammer Bros,Bowser,Princess Toadstool|&|In the Mushroom Kingdom, a tribe of turtle-like creatures known as the Koopa Troopas invade the kingdom and uses the magic of its king, Bowser, to turn its inhabitants, known as the Mushroom People, into inanimate objects such as bricks, stones and horsehair plants. Bowser and his army also kidnap Princess Toadstool
+The Legend of Zelda,9|&|Link,Zelda,Ganon|&|A small kingdom in the land of Hyrule is engulfed by chaos when an army led by Ganon, the Prince of Darkness, invaded and stole the Triforce of Power, one part of a magical artifact which alone bestows great strength.
+The Legend of Zelda,1|&|,Link,Zelda,Ganon|&|A small kingdom in the land of Hyrule is engulfed by chaos when an army led by Ganon, the Prince of Darkness, invaded and stole the Triforce of Power, one part of a magical artifact which alone bestows great strength.
+Zelda II The Adventure Of Link,9|&|Link,Impa,Thunderbird,Ganon|&|Now 16 year old Link notices a strange mark on the back of his left hand, exactly like the crest of Hyrule. 
+Strawberry Shortcake,9|&|Strawberry Shortcake,Apple Dumplin|&|A few short cartoons
+Final Fantasy Tactics Advance,9|&|Marche Radiuju,Ritz Malheur,Mewt Randell,Doned Radiuju,Cid Randell|&|Marche wakes up in the world of Ivalice. The fantasy Ivalice is supposedly a reincarnation of Mewt's memories from a Final Fantasy game.
+Zelda II The Adventure Of Link,1|&|Link,Impa,Thunderbird,Ganon|&|Now 16 year old Link notices a strange mark on the back of his left hand, exactly like the crest of Hyrule.
 Brain Age 2,16|&|You|&|Puzzle games.
 Carnival Games,16|&|You|&|A frenzied combination of tapping, blowing, speaking and stylus maneuvering brings the now famous midway to life.
 Cooking Mama 2,16|&|Mama|&|Cooking simulatin game with 55 recipes such as pan fried lobster, pierogie, cream puffs and sushi.
