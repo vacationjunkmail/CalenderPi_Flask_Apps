@@ -46,7 +46,7 @@ def single_game(console_id,game_id):
 	shortname = game_data[0]['console_shortname']
 	title = game_data[0]['console_name']
 	params.append(game_id)
-	query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image,v.header_image,v.game_description
+	query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image,v.header_image,ifnull(v.game_description,'') as game_description
 		   from games.game_console as c inner join games.video_games as v on v.console_id = c.id
                    where c.id = %s and v.id = %s;'''
 	results = g.mysql_db.select_params(query,params)
