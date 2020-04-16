@@ -8,12 +8,13 @@
 import os, datetime, re, sys, time
 from mysql_conn.connect_mysql import get_connection
 
-console_id = 14
-select_statement = '''select v.id,v.`name`,g.console_shortname 
+console_id = 6
+select_statement = '''select v.id,v.`name`,g.console_shortname,v.small_image,v.large_image,v.header_image 
 			from games.video_games as v inner join games.game_console as g on g.id=v.console_id 
-			where g.id = {} and (v.small_image ='' or v.large_image = '' or v.small_image is null or v.large_image is null);'''.format(console_id)
+			where g.id = {} and (v.small_image ='' or v.large_image = '' or v.small_image is null or v.large_image is null
+			or v.header_image is null or v.header_image ='');'''.format(console_id)
 select_consoles = 'select console_shortname from games.game_console where id = {};'.format(console_id)
-update_query = ''' update games.video_games set large_image=%s, small_image=%s where id = %s;'''
+update_query = ''' update games.video_games set large_image=%s, small_image=%s,header_image=%s where id = %s;'''
 def stop_me():
 	print("Planned exit Program did not finish!")
 	sys.exit()
@@ -33,7 +34,7 @@ mysql_db = get_connection()
 console_query = mysql_db.select_query(select_consoles)
 console_data = console_query.fetchall()
 mysql_db.close_connection()
-sub_dir=['small','large']
+sub_dir=['small','large','header']
 nested_dict = {}
 d = {}
 for row in console_data:
@@ -63,19 +64,22 @@ for row in video_game_data:
 	regex = re.compile(r'^{}\.'.format(image),re.IGNORECASE)
 	small = [f for f in d[system]['small'] if regex.search(f)]
 	large = [f for f in d[system]['large'] if regex.search(f)]
-	print(small)
+	header = [f for f in d[system]['header'] if regex.search(f)]
 	s = ''
 	l = ''
+	h = ''
+	if len(header):
+		h = header[0]
 	if len(small):
 		s = small[0]
 
 	if len(large):
 		l = large[0]
 
-	if len(small) == 0 and len(large) == 0:
+	if len(small) == 0 and len(large) == 0 and len(header) == 0:
 		continue
 			
-	params = [l,s,row[0]]
+	params = [l,s,h,row[0]]
 	mysql_db = get_connection()
 	a = mysql_db.update_statement(update_query,params)
 	print(a)
