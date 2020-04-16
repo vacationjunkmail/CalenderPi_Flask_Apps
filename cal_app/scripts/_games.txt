@@ -1,7 +1,81 @@
+Duck Hunt,1|&|Dog, Hunter|&|Shoot ducks with a lightgun.
+Ducktales,1|&|Huey, Dewy,Louie,Launchpad,Scrooge|&|Travel around the world and outer space in search of five treasures to further increase his fortune.
+Excitebike,1|&|Hero|&|Ride motorcycle on different tracks.
+Friday the 13th,1|&|Jason Voorhees,Pamela Voorhees,Alice Hardy,Ginny Field,Tommy Jarvis|&|You and your six Camp Counselor friends are watching over the kids while enjoying Camp Crystal Lake and the wilderness. 
+George Foremans KO Boxing,1|&|George Foreman,Lorenzo "Bullet" Luciano,Tommy "Tomado" Collins,Tyrone "Madman" Mosely,Larry "The Surgeon" Scott,And More...|&|Boxing simulation
+Ghosts N Goblins,1|&|Sir Arthur,Princess Prin-Prin,Astaroth|&|Sir Arthur, who must defeat zombies, ogres, demons, cyclopes, dragons and other monsters in order to rescue Princess.
+Golf,1|&|Golfer|&|Gold simulation
+Guerrilla War,1|&|Player 1 (Che Guevara in JP),Player 2 (Fidel Castro in JP)|&|Two unnamed rebel commandos as they raid an unnamed Caribbean Island in order to free it from the rule of an unnamed tyrannical dictator. 
+Gun Smoke,1|&|Billie Bob,Bandit Bill,Cutter Boomerang,Devil Hawk,Ninja,And More...|&|The days of the Gold Rush, to a small, bustling mining town of the Old West. Ruthless gold-stealing bandits are terrorizing the townsfolk and it's up to you to stop them! 
+Ice Hockey,1|&| United States, Sweden, Czechoslovakia , Canada, Poland,Soviet Union (URS)|&|Pro Hockey Simulation game
+Jaws,1|&|Jaws,Diver,Driver|&|The player pilots a boat across the sea, randomly encountering groups of hostile sea creatures. 
+Jordan vs Bird,1|&|Michael Jordan,Larry Bird|&|Basketball Simulation
+Karate Champ,1|&|Karateka 1,Karateka 2|&|Fight between the first karateka wearing a white gi who is controlled by player one and the second karateka wearing a red gi who is controlled by either player two or the CPU, followed by various bonus rounds for the successful player. 
+Kid Icarus,1|&|Medusa,Palutena,Pit|&|Set in Angel Land, which is a fantasy world with a Greek mythology
+Kung-Fu Master,1|&|Thomas,Tom Tom Brothers|&|You'll need lightning fast reactions to knock out the Knife Thrower, stop the Stick Fighter, and trip up the evil Tom Tom Brothers.
+Little League Baseball Championship Series,1|&|Pennsylvania,Puerto Rico,Spain,Korea,Mexico,Chinese Taipei,And More...|&|Baseball simulation game.
+Major League Baseball,1|&|California Angels,Cincinnati Reds,Cleveland Indians,Detroit Tigers,Milwaukee Brewers,Montreal Expos,And More...|&|Baseball simulation game.
+Mario Bros,1|&|Mario,Luigi|&|Investigate the sewers of New York after strange creatures have been appearing down there.
+Mega Man,1|&|Mega Man,Dr. WilyDr. Light|&|In the year 200X, robots developed to assist mankind are commonplace thanks to the efforts of renowned robot designer Dr. Light.
+Metal Gear,1|&|Solid Snake,Dr. Pettrovich,Shoot Gunner,Machinegun Kid,Arnold,And More...|&|West discovers that a weapon of mass destruction is being constructed inside Outer Heaven, a fortified state founded by a "legendary mercenary" 200 km north of Galzburg, South Africa. 
+Metroid,1|&|Samus Aran,Mother Brain,Kraid,Ridley|&|In the year 20X5, the Space Pirates attack a Galactic Federation-owned space research vessel and seize samples of Metroid creatures—the parasitic lifeforms discovered on the planet SR388.
+Mickey Mousecapade,1|&|Mickey Mouse, Mini Mouse, And More...|&|Mickey and Minnie are traveling through the Fun House, the Ocean, the Forest, the Pirate Ship, and the Castle trying to rescue someone.
+Ninja Gaiden,1|&|Ryu Hayabusa,Bloody Malth,Jashin,Ken Hayabusa,And More...|&|Ryu seeks revenge for the death of his father and gradually finds himself involved in a sinister plot that threatens the entire world.
+Ninja Gaiden II The Dark Sword of Chaos,1|&| Ryu Hayabusa,Ashtar,Robert T. Sturgeon,Irene Lew,And More...|&| The evil lord who controlled Jaquio, is informed of Jaquio's defeat; he devises a plan to rule over Earth by opening the Gate of Darkness.
+Ninja Gaiden III The Ancient Ship of Doom,1|&| Ryu Hayabusa,Irene Lew,Agent Foster,Clancy,And More...|&|Ryu is accused of Irene's murder but says it was not him, that it was somebody else who looked like him who tried to frame him.
+Nintendo World Cup,1|&|Argentina,Brazil,Cameroon,Mexico,Netherlands,Spain,And More...|&|Soccer simulation game
+Paperboy,1|&|boy|&|Ride bike to deliver newspaper to the neighborhood.
+Pro Wrestling,1|&|Fighter Hayabusa,Giant Panther,Kin Corn Karn,King Slender,Starman,The Amazon |&|Pro Wrestling Simulation
+Qbert,1|&|Q*bert,Ugg and Wrongway,Slick and Sam,Coily|&|An axonometric third-person perspective.
+R.B.I. Baseball,1|&|Boston, California, Detroit, Houston, Minnesota, New York, St. Louis,San Francisco|&|Pro Baseball simulation
+Rampage,1|&|George,Lizzie,Ralph|&|As monsters, they need to raze all buildings in a high-rise city to advance to the next level, eating people and destroying helicopters, tanks, taxis, police cars, boats, and trolleys along the way.
+Robocop,1|&|Robocop|&|A sadistic crime wave is sweeping through old Detroit. The situation is explosive - in fact, it is so bad, a private corporation, O.C.P., has assumed control of the police force.
+Spy vs Spy,1|&|Heckel,Jackel|&|Five important items have been hidden in a series of rooms. One spy must get the items and escape to the airport... before the timer runs out! Catch the other spy and knock him silly with powerful punches and kicks.
+Super Dodge Ball,1|&|USA,Pro All-Stars,Shadow,India,Iceland,China,Kenya,And More...|&|Dodge ball simulation game
+Super Mario Bros 2,1|&|Mario, Luigi,Toadstool,Wart,And More...|&|Mario has a dream of a staircase leading to a door to another world. A voice identifies the world as the dreamland of Subcon, and asks for Mario's help in defeating the villainous frog named Wart, a tyrant who has cursed Subcon and its people.
+Super Mario Bros 3,1|&|Mario,Luigi,Bowse,And More...|&|The Mushroom World, the setting of the game, is invaded by the Koopalings, Bowser's seven children.
+Talespin,1|&|Kit Cloudkicker,Baloo,Rebecca Cunningham,Shere Khan,Don Karnage|&|This game involves the adventures of Baloo and Kit Cloudkicker, delivering cargo for Rebecca Cunningham.
+Tecmo Baseball,1|&|Minnesota, Detroit, Milwaukee,St. Louis, San Francisco, New York,And More...|&|Pro Baseball simulation
+Tecmo Bowl,1|&|New York Giants,New York Jets, Houston Oilers,New England Patriots,New Orleans Saints, Los Angeles Raiders,And More...|&|Pro Football Simulation
+Tecmo NBA Basketball,1|&|Chicago Bulls,Houston Rockets,New York Knicks,Golden State Warriors,Los Angeles Lakers,And More...|&|Pro Basketball Simulation
+Tecmo Super Bowl,1|&|Los Angeles Rams,Dallas Cowboys,Miami Dolphins,Phoenix Cardinals,Chicago Bear,And More...|&|Pro Football Simulation.
+Tecmo World Wrestling,1|&|Akira Dragon,El Tigre, Pat Gordon,Rex Beat,Jackie Lee,Boris Chekov,And More...|&|Pro Wrestling Simulation
+Teenage Mutant Ninja Turtles,1|&|Leonardo, Raphael, Michelangelo,Donatello,April O'Neil,Shredder,Bebop,Rocksteady,Splinter|&|The Ninja Turtles are on a mission to retrieve the Life Transformer Gun from Shredder, a device that could restore their sensei Splinter back to his human form. 
+Tetris,1|&|Player 1,Player 2|&|Puzzle game with falling blocks
+The Adventures of Bayou Billy,1|&|Billy West,Godfather Gordon,Annabelle|&|Billy a former U.S. soldier from New Orleans, who has fought against a local crime boss, known as Godfather Gordon. 
+The Simpsons Bart vs The Space Mutants,1|&|Bart,Homer,Lisa,And More...|&|Bart is the only one who knows of the aliens' secret plan and he has to stop them from collecting the items they need to build their "ultimate weapon" to take over the world.
+Tiny Toon Adventures,1|&|Buster Bunny,Montana Max,Dizzy Devil,Furrball,Plucky Duck,Babs Bunny,And More...|&|Initially control Buster Bunny in the effort to rescue Babs Bunny from her kidnapper, Montana Max.
+U.S. Championship V Ball,1|&|George,Michael|&|Self-described beach bums named who make their living playing beach volleyball against locals. One day, they find a flyer for a nationwide beach volleyball tournament offering the winning team a $2,500,000 cash prize.
+World Class Track Meet,1|&|Player 1,Player 2|&|100M dash, 110M hurdles, long jump, and triple jump.
+WWF Wrestlemania,1|&|Hulk Hogan, Andre the Giant,"Macho Man" Randy Savage, "The Million Dollar Man" Ted DiBiase, Bam Bam Bigelow,Honky Tonk Man|&|Pro Wrestling Simulation
+Mike Tysons Punch-Out!!,1|&| Lil Mac,Mike Tyson,Glass Joe,Bald Bull|&|Boxing simulation game
+10 Yard Fight,1|&|Offense,Defense|&|Pro football simulation
+Arch Rivals,1|&|Blade,Hammer,Lewis,Mohawk,Moose,Reggie,Tyrone,Vinnie|&|Basketball simulation with fighting.
+Back to the Future,1|&|Doc,Marty McFly|&|It has been six months since Marty McFly witnessed Dr. Emmett Brown disappear into an unknown time. The bank has begun foreclosing on Doc's home. On May 14, 1986, while helping his father George clear out Doc's possessions, Marty is shocked to see a DeLorean.
+Bad Dudes,1|&|Blade,Striker|&|The game starts in Washington, D.C., where President Ronnie has been abducted by the evil DragonNinja.
+Balloon Fight,1|&|Player 1,Player 2|&|A single-player game where the goal is to avoid the lightning sparks and collect the balloons, aiming to move up the ranks and compete for the high score. The player starts with one life.
+Baseball,1|&|Baseball Teams|&|Pro baseball simulation
+Bases Loaded,1|&|Boston,D.C.,Hawaii,Jersey,Kansas,L.A.,Miami,Omaha,And More...|&|Pro Baseball simulation
+Bases Loaded 2,1|&|Utah,Texas,Philly,Omaha,N.Y.,Miami,L.A.,And More...|&|Pro Baseball simulation
+Bases Loaded 3,1|&|Osmond,Talbot,Morton,Jaffe|&|Pro Baseball simulation
+Batman,1|&|Batman,Deadshot,KGBeast,Maxie Zeus,Heat Wave,Shakedown,Nightslayer,And More...|&|You are the Batman taking the fight to the Gotham City Streets, Axis Chemical Plant, Gotham Sewers, Mysterious Laboratory, and the Gotham Cathedral Belltower.
+Battletoads,1|&|Rash,Zitz,Pimple|&|Professor T. Bird and the three Battletoads, Rash, Zitz, and Pimple, are escorting Princess Angelica to her home planet using their spacecraft, the Vulture.
+Best of the Best Championship Karate,1|&|Kickboxers|&|Kick boxing game that features black belt kick boxing masters. The object is to win the kick boxing championship by defeating an array of kick boxing masters in a series of fighting matches.
+Bionic Commando,1|&|Ladd Spencer,Super Joe,Master-D,And More...|&|One day, Federation Forces discover top secret documents about "Albatros", an unfinished project developed by the Empire's predecessor, the "Badds".
+Blades of Steel,1|&|Toronto, Vancouver, Montreal,Edmonton,New York, Chicago, Los Angeles and Minnesota|&|Pro Hockey simualtion game
+California Games,1|&|Rippin Rick,And More...|&|Mini games (Half-pipe,Roller skating,Surfing,BMX,Footbag,Flying disc)
+Chessmaster,1|&|Player 1,Player 2,Chessmaster|&|Chess playing game
+Chip n Dale Rescue Rangers,1|&|Chip,Dale,Zipper,Monterey Jack,Gadget,And More...|&|The Rescue Rangers are going on a mission to retrieve a missing kitten for a girl named Mandy. 
+Commando,1|&|Super Joe|&|Dropped off in a jungle by a helicopter, and has to fight his way out singlehandedly, fending off a massive assault of enemy soldiers.
+Contra,1|&|Bill Rizer,Lance Bean|&|Set in the distant future of the year 2633 A.D., where the evil Red Falcon Organization have set a base on the fictional Galuga archipelago near New Zealand in a plot to wipe out humanity.
+Dick Tracy,1|&|Dick Tracy|&|Solve several mysteries without accusing the wrong person or shooting too many unarmed villains.
+Donkey Kong,1|&|Jumpman,Donkey Kong,Lady|&|Donkey Kong kidnaps Jumpman girlfriend, originally known as Lady
+Double Dragon,1|&|Billy Lee, Jimmy Lee,Marian,Linda,Willy,Abobo,And More...|&|Fight your way into the turf of the Black Warriors gang in order to rescue Billy's love interest, Marian. 
+Double Dribble,1|&|Boston,Chicago,Los Angeles,New York|&|Pro Basketball simulation
 Super Mario Bros,9|&|Mario,Luigi,Hammer Bros,Bowser,Princess Toadstool|&|In the Mushroom Kingdom, a tribe of turtle-like creatures known as the Koopa Troopas invade the kingdom and uses the magic of its king, Bowser, to turn its inhabitants, known as the Mushroom People, into inanimate objects such as bricks, stones and horsehair plants. Bowser and his army also kidnap Princess Toadstool
 Super Mario Bros,1|&|Mario,Luigi,Hammer Bros,Bowser,Princess Toadstool|&|In the Mushroom Kingdom, a tribe of turtle-like creatures known as the Koopa Troopas invade the kingdom and uses the magic of its king, Bowser, to turn its inhabitants, known as the Mushroom People, into inanimate objects such as bricks, stones and horsehair plants. Bowser and his army also kidnap Princess Toadstool
 The Legend of Zelda,9|&|Link,Zelda,Ganon|&|A small kingdom in the land of Hyrule is engulfed by chaos when an army led by Ganon, the Prince of Darkness, invaded and stole the Triforce of Power, one part of a magical artifact which alone bestows great strength.
-The Legend of Zelda,1|&|,Link,Zelda,Ganon|&|A small kingdom in the land of Hyrule is engulfed by chaos when an army led by Ganon, the Prince of Darkness, invaded and stole the Triforce of Power, one part of a magical artifact which alone bestows great strength.
+The Legend of Zelda,1|&|Link,Zelda,Ganon|&|A small kingdom in the land of Hyrule is engulfed by chaos when an army led by Ganon, the Prince of Darkness, invaded and stole the Triforce of Power, one part of a magical artifact which alone bestows great strength.
 Zelda II The Adventure Of Link,9|&|Link,Impa,Thunderbird,Ganon|&|Now 16 year old Link notices a strange mark on the back of his left hand, exactly like the crest of Hyrule. 
 Strawberry Shortcake,9|&|Strawberry Shortcake,Apple Dumplin|&|A few short cartoons
 Final Fantasy Tactics Advance,9|&|Marche Radiuju,Ritz Malheur,Mewt Randell,Doned Radiuju,Cid Randell|&|Marche wakes up in the world of Ivalice. The fantasy Ivalice is supposedly a reincarnation of Mewt's memories from a Final Fantasy game.
@@ -37,7 +111,7 @@ Professor Layton And The Last Specter,16|&|Emmy Altava,Hershel Layton, Luke,Clar
 Professor Layton And The Unwound Future,16|&|Hershel Layton,Luke,Bill Hawks,And More...|&|As Layton and Luke are invited to witness a demonstration of a time machine built by Dr. Alain Stahngun, the experiment goes awry, causing the disappearance of Stahngun and the prime minister, Bill Hawks.
 Rhythm Heaven,16|&|You|&|Rhythm game
 Sim Animals,16|&|Sim|&|Embrace all the adventure, fun, and mischief that await you in the vast forest. You have the power to reach out and touch, pick up and move everything in the forest from squirrels and foxes to trees and flowers.
-The Legend of Zelda:Phantom Hourglass,16|&|Link,Terra,Ciela,,And More...|&|Picking up immediately after The Wind Waker, in which Link defeats Ganon who turns to stone and remains at the bottom of a now sealed away Hyrule, Link and Tetra travel over the flooded Hyrule called the Great Sea on board Tetra's pirate ship. 
+The Legend of Zelda:Phantom Hourglass,16|&|Link,Terra,Ciela,And More...|&|Picking up immediately after The Wind Waker, in which Link defeats Ganon who turns to stone and remains at the bottom of a now sealed away Hyrule, Link and Tetra travel over the flooded Hyrule called the Great Sea on board Tetra's pirate ship. 
 The Sims 2 Castaway,16|&|Sim|&|Stuck on a desert island
 The Sims 2,16|&|Sim|&|Life simulation game.
 Spider-Man Game Of The Year Edition,13|&|Spiderman|&|Following Wilson Fisk's capture by Spider-Man, the Demons begin seizing Fisk's illicit assets. Mary Jane and Spider-Man learn that the Demons are seeking something called Devil's Breath.With the aid of Officer Jefferson Davis, Spider-Man thwarts a Demon attack.
