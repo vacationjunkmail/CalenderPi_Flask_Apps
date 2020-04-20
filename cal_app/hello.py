@@ -124,7 +124,7 @@ def camera():
 		
 		my_time = datetime.datetime.now()
 		image_directory = "{}/static".format(os.getcwd())
-		image_name = '_image.jpg';
+		image_name = '_PiCamera_image.jpg';
 		
 		#removes file if exists
 		check_file_exists(image_directory,image_name)
