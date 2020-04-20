@@ -33,6 +33,7 @@ def get_data(data):
 	title = ''
 	dates_list = []	
 	for k,v in enumerate(data):
+		v = v.strip()
 		if date_regex.fullmatch(v):
 			v = datetime.datetime.strptime(v,'%Y-%m-%d')
 			my_date = v

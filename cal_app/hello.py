@@ -58,7 +58,7 @@ def hello():
     #load data local infile '' into table test_db.test_tbl fields terminated by ',' optionally enclosed by '"' lines terminated by '\n' (id,username,pwd);
     load_file = '''load data local infile '{}' into table test_db.test_tbl fields terminated by ',' optionally enclosed by '\"' lines terminated by '\\n' (id,username,pwd);'''.format('/home/pi/Downloads/load_data_infile.txt')
     
-    return render_template('index.html', name = 'Je Suis', menu_data = data, menu_columns = columns)
+    return render_template('index.html', name = 'Web Sites', menu_data = data, menu_columns = columns)
 
 @app.route("/me/<string:yourname>/")
 def me(yourname):
