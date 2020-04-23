@@ -2,3 +2,8 @@
 *.swp
 joke.html
 *_PiCamera_image.jpg
+__pycache__/
+*.py[cod]
+instance/
+.webassets-cache
+
