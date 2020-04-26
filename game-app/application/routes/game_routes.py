@@ -18,7 +18,7 @@ def after_request(resp):
 
 @game_bp.route('/',methods=['GET'])
 def home():
-	return render_template('game/index.html',title='Game App Factory Blueprint',menu=g.menu[1],body='home')
+	return render_template('game/index.html',title='Games Web Site',menu=g.menu[1],body='home')
 
 @game_bp.route('/two/',methods=['GET'])
 def two():
