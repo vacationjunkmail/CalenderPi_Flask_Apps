@@ -1,0 +1,13 @@
+[Unit]
+Description=uWsgi instance of App Factory Blueprint Games App.
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/game-app
+ExecStart=/usr/bin/uwsgi game-app.ini
+
+[Install]
+WantedBy=multi-user.target
+

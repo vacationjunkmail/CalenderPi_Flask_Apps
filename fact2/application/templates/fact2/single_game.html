@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}
+    {{ title  }}
+{% endblock %}
+{% include "nav.html" %}
+{% block content %}
+    <div id="hero-image-single" style='background-image:url("/public/images/{{ header_image }}");'>
+        <h1 id="hero-title"><a href="../" style="color:#000000">{{ data[0]['name'] }}</a></h1>
+    </div>
+    <div id="posters-wrapper" class="content-padding clearfix">
+	{#{ data[0] }#}
+	<div class="poster-consoles">
+            <img src="/public/images/{{ shortname }}/large/{{ data[0]['large_image'] }}" class="img-responsive" />
+        </div>
+        <div class="description-wrapper">
+            <div class="description">
+	        <h2 class="movie-header">Description</h2>
+                <p>
+			{% if data[0]['game_description'] | length > 1  %}
+				{{ data[0]['game_description'] | safe }}
+			{% else %}
+				{{ data[0]['name'] }} has no description.
+			{% endif %}
+			
+		</p>
+            </div>
+            <div class="main-characters">
+                <h2 class="movie-header">Main Characters</h2>
+                <ul>
+                    {% for item in  characters %}
+                        <li>{{ item['name'] }}</li>
+		    {% endfor %}
+                </ul>
+            </div>
+	</div>
+    </div>
+{% endblock %}
+{% block footericons %}
+    {% if facebook %}
+	---------------
+    {% endif %}
+    <a href="{{ twitter }}" title="{{ title }} Twitter"><img src = "/public/images/{{ shortname }}/{{ shortname }}_icon.png" alt = "{{ shortname }} logo image" /></a>
+{% endblock %}
+
