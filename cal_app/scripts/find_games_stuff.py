@@ -14,12 +14,20 @@ select_statement = '''select v.id,v.`name`,g.console_shortname,v.small_image,v.l
 			where g.id = {} and (v.small_image ='' or v.large_image = '' or v.small_image is null or v.large_image is null
 			or v.header_image is null or v.header_image ='');'''.format(console_id)
 select_consoles = 'select console_shortname from games.game_console where id = {};'.format(console_id)
+
 update_query = ''' update games.video_games set large_image=%s, small_image=%s,header_image=%s where id = %s;'''
+update_small_image = '''update games.video_games set small_image=%s where id = %s;'''
+update_large_image = '''update games.video_games set large_image=%s where id = %s;'''
+update_header_image = '''update games.video_games set header_image = %s where id = %s;'''
+
 def stop_me():
 	print("Planned exit Program did not finish!")
 	sys.exit()
 	return ''
 
+def db_response(col,msg):
+	print("\t{} {}".format(col,msg))
+	return ''
 script_name = os.path.abspath(__file__)
 
 #path = '/var/www/blue_print_app/static/images'
@@ -79,9 +87,15 @@ for row in video_game_data:
 	if len(small) == 0 and len(large) == 0 and len(header) == 0:
 		continue
 			
-	params = [l,s,h,row[0]]
 	mysql_db = get_connection()
-	a = mysql_db.update_statement(update_query,params)
-	print(a)
+	if row[5] is '' and h:
+		ph = mysql_db.update_statement(update_header_image,[h,row[0]])
+		db_response("Header Image",ph)
+	if row[3] is '' and s:
+		ph = mysql_db.update_statement(update_small_image,[s,row[0]])
+		db_response("Small Image",ph)
+	if row[4] is '' and l:
+		ph = mysql_db.update_statement(update_large_image,[l,row[0]])
+		db_response("Large Image",ph)
 	mysql_db.close_connection()
 
