@@ -11,15 +11,11 @@
 		<link rel="stylesheet" href="/public/css/calendar_code.css">
 		<link rel="stylesheet" href="/public/css/jquery-ui-1.11.4/jquery-ui.css">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
+		<script src="/public/js/calender.js"></script>
 		</head>
 	<body>
-	<script src="{{ url_for('static', filename='js/calender.js' ) }}"></script>		
 	
-	<!--
-		
-		https://github.com/fullcalendar/fullcalendar-site-static 
-	-->
-	<!--
+	<!--https://github.com/fullcalendar/fullcalendar-site-static
 	<form>
 		<input type ="text" name = "CSRFToken" id = "CSRFToken" value = "{{ csrf_token() }}" />
 		<input type = "text" name = "test" id = "test" value = "" />
@@ -32,10 +28,10 @@
 	<a href="/"><span class="glyphicon glyphicon-home"></span></a> &nbsp;
 	<div id='calendar'></div>
 	<div id="eventContent" title="Event Details" style="display:none;">
-	Title: <span id="title"></span><br />
-    Start: <span id="startTime"></span><br>
-    End: <span id="endTime"></span><br><br>
-</div>
-<a href="/" class="button">Home</a>
+		Title: <span id="title"></span><br />
+	        Start: <span id="startTime"></span><br>
+    		End: <span id="endTime"></span><br><br>
+	</div>
+	<a href="/" class="button">Home</a>
 	</body>
 </html>
