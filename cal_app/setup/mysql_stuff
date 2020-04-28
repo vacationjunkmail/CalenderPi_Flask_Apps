@@ -1,2 +1,0 @@
-Creates a unique index on whatever
-create unique index date_idx on menu (`date`);

@@ -76,8 +76,8 @@ def calendar_data():
     params = [int(date_split[1]),int(date_split[0])]
     
     query = '''select `start_date` as start, `end_date` as end, `title` 
-				from dinner.menu_2 where month(`start_date`) = ? and year(`start_date`) = ?
-			'''    
+	       from dinner.menu_2 where month(`start_date`) = ? and year(`start_date`) = ?
+	    '''    
     
     data = g.mysql_db.select_params(query,params)
     
