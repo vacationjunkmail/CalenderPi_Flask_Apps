@@ -4,6 +4,7 @@ from picamera import PiCamera
 from os import getcwd
 from datetime import datetime
 from time import sleep
+from application.local_modules import check_file
 
 from mysql_conn.connect_mysql import get_connection
 
@@ -26,20 +27,21 @@ def camera():
 		image_name = '_PiCamera_image.jpg';
 	
 		#remove file Function
-		#check_file_exists(image_directory,image_name)
+		r = check_file.check_file_exists(image_directory,image_name)
+		print("{} images removed".format(r))
 		
 		image_name = "{}{}".format(int(my_time.timestamp()),image_name)
 		pic_time = str(my_time.strftime('%A %B %-d %Y %-I:%M:%S %p'))
 		image_name = "{}/{}".format(image_directory,image_name)
 		camera = PiCamera(resolution=(1280,720))
 		sleep(5)
-		#camera.annotate_text = pic_time
+		camera.annotate_text = pic_time
+		camera.annotate_text_size = 20
 		camera.capture(image_name)
 		camera.close()
-		print(image_name)
 		image_name = image_name.split('/')
-		image_name = "/".join(image_name[-2:])
-		print(image_name)
+		image_name = ['camera' if item == 'cal_app' else item for item in image_name]
+		image_name = "/".join(image_name[-3:])
 		data = []
 		data.append({'photo':image_name})
 		data.append({'name':pic_time})
