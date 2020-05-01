@@ -1,0 +1,13 @@
+[Unit]
+Description=uWsgi instance to start cal_app and other sites.
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/calendar_app
+ExecStart=/usr/bin/uwsgi ini_calendar_app.ini
+
+[Install]
+WantedBy=multi-user.target
+
