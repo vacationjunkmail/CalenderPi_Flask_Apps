@@ -12,6 +12,8 @@ def create_app():
 	with app.app_context():
 		from .routes import index_routes
 		from .routes import cal_routes
+		from .routes import camera_routes
 		app.register_blueprint(index_routes.index_bp)
 		app.register_blueprint(cal_routes.cal_bp)
+		app.register_blueprint(camera_routes.camera_bp,url_prefix="/camera/")
 	return app
