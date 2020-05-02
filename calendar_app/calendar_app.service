@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
+Environment="SECRET_KEY=Can be set here or as an environment variable which is probably smartest.As well as a file then reading the file"
 WorkingDirectory=/var/www/calendar_app
 ExecStart=/usr/bin/uwsgi ini_calendar_app.ini
 
