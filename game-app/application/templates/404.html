@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+    {{ title  }}
+{% endblock %}
+{% include "nav.html" %}
+{% block content %}
+    <div id="hero-image-single" style="background-image:url('/public/images/404.jpg');">
+        <h1 id="hero-title">This is not the page you are looking for.</h1>
+    </div>
+    <div id="posters-wrapper" class="content-padding clearfix">
+        {{ e }}<br />
+	{#{ bad_url }#}
+	Url path does not exists: {{ req_path }}
+    </div>
+{% endblock %}
+{% block footericons %}
+{% endblock %}
+

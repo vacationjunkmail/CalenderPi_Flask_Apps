@@ -1,6 +1,4 @@
-/* --------------------------
-General Styles 
------------------------------ */
+/* ------ General Styles ------- */
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
@@ -12,15 +10,17 @@ body {
 	padding-right: 11%;
 }
 
-/* --------------------------
-Hero Image / Title Styles 
------------------------------ */
+.content-padding-body {
+	padding-left :5%;
+	padding-right: 5%;
+}
+/*------- Hero Image / Title Styles -------*/
 #hero-image {
 	height: 550px;
 	width: 100%;
 	background-color: #444;
 	background-image: url('../images/PSHome.png');
-	//background-size: cover;
+	/*background-size: cover;*/
 	background-size: auto;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -46,19 +46,62 @@ Hero Image / Title Styles
 	-moz-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+	transform: translateX(-50%);
 
-  bottom: 0;
-  margin: 0px;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 1.20em;
-  letter-spacing: 0.4px;
+	bottom: 0;
+	margin: 0px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 1.20em;
+	letter-spacing: 0.4px;
 }
 
-/* ---------------------------------------
-Navbar and Navigation Styles / Overrides 
------------------------------------------- */
+/* Single Image Header */
+
+#hero-image-title {
+	height: 100px;
+	width: 100%;
+	background-color: #444;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+}
+
+#hero-image-title::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.15);
+	content: "";
+}
+
+#hero-image-title #hero-title {
+	position: absolute;
+	background-color: #fff;
+	padding: 25px 60px;
+	left: 50%;
+	width: auto;
+
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+  	transform: translateX(-50%);
+  	bottom: 0;
+
+  	margin: 0px;
+
+  	text-transform: uppercase;
+  	font-weight: 400;
+  	font-size: 1.20em;
+  	letter-spacing: 0.4px;
+}
+/* End of Single Image Header */
+
+/*--------------- Navbar and Navigation Styles / Overrides --------------*/
 .navbar-fixed-top {
 	position: absolute;
 	padding-top: 10px;
@@ -96,9 +139,7 @@ Navbar and Navigation Styles / Overrides
 	background-color: rgba(0,0,0,0.5);
 }
 
-/* -----------------------------
-Home Page Posters Styles 
--------------------------------- */
+/*------- Home Page Posters Styles -------*/
 
 #posters-wrapper {
 	padding-top: 75px;
@@ -110,7 +151,7 @@ Home Page Posters Styles
 	position: relative;
 }
 
-/* Poster Overlay Styles */
+/*------- Poster Overlay Styles -------*/
 .poster-info-overlay {
 	position: absolute;
 	background: rgba(0,0,0,0.7);	
@@ -123,19 +164,19 @@ Home Page Posters Styles
 .poster-info-overlay h3 {
 	text-transform: uppercase;
 	font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-  color: #fff;
-  margin: 0px;
+  	font-size: 13px;
+  	letter-spacing: 0.3px;
+	color: #fff;
+	margin: 0px;
 }
 .poster-info-overlay h4 {
 	text-transform: uppercase;
 	font-weight: 400;
-  font-size: 11px;
-  letter-spacing: 0.3px;
-  color: #fff;
-  margin: 0px;	
-  margin-top: 15px;
+  	font-size: 11px;
+  	letter-spacing: 0.3px;
+  	color: #fff;
+  	margin: 0px;	
+  	margin-top: 15px;
 }
 .poster:hover .poster-info-overlay {
 	opacity: 1;
@@ -143,11 +184,11 @@ Home Page Posters Styles
 
 .poster-consoles {
         width: 30%;
-        //margin-right: 4%;
+        /*margin-right: 4%;*/
         display: inline-block;
         position: relative;
 }
-/* Poster Overlay Styles */
+/*------- Poster Overlay Styles -------*/
 .poster-consoles-info-overlay {
         position: absolute;
         background: rgba(0,0,0,0.7);
@@ -160,27 +201,53 @@ Home Page Posters Styles
 .poster-consoles-info-overlay h3 {
         text-transform: uppercase;
         font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-  color: #fff;
-  margin: 0px;
+  	font-size: 13px;
+  	letter-spacing: 0.3px;
+  	color: #fff;
+  	margin: 0px;
 }
 .poster-consoles-info-overlay h4 {
         text-transform: uppercase;
         font-weight: 400;
-  font-size: 11px;
-  letter-spacing: 0.3px;
-  color: #fff;
-  margin: 0px;
-  margin-top: 15px;
+  	font-size: 11px;
+  	letter-spacing: 0.3px;
+  	color: #fff;
+  	margin: 0px;
+  	margin-top: 15px;
 }
 .poster-consoles:hover .poster-consoles-info-overlay {
         opacity: 1;
 }
 
-/* -----------------------------
-Footer Styles 
--------------------------------- */
+.poster-consoles-info-overlay-admin {
+        background: rgba(0,0,0,0.7);
+        bottom: 0;
+        left: 0;
+        opacity: 100;
+        transition: 0.5s ease-in-out;
+        padding: 30px 15px;
+}
+.poster-consoles-info-overlay-admin h3 {
+        text-transform: uppercase;
+        font-weight: 400;
+  	font-size: 13px;
+  	letter-spacing: 0.3px;
+  	color: #fff;
+  	margin: 0px;
+}
+.poster-consoles-info-overlay-admin h4 {
+        text-transform: uppercase;
+        font-weight: 400;
+  	font-size: 11px;
+  	letter-spacing: 0.3px;
+  	color: #fff;
+  	margin: 0px;
+  	margin-top: 15px;
+}
+.poster-consoles-info-overlay-admin:hover {
+        opacity: 1;
+}
+/*------- Footer Styles -------*/
 
 footer {
 	margin-top: 50px;
@@ -227,19 +294,14 @@ footer .social-media-icons a:first-child:hover i {
 	color: #333;
 }
 
-/* -----------------------------
-Movie-Single Styles 
--------------------------------- */
-
-/* ---------------------------------------
-Movie-Single Hero Image and Title Styles 
------------------------------------------- */
+/*------- Movie-Single Styles -------*/
+/*------- Movie-Single Hero Image and Title Styles -------*/
 
 #hero-image-single {
 	height: 550px;
 	width: 100%;
 	background-color: #444;
-	//background-size: cover;
+	/*background-size: cover;*/
 	background-size:auto;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -267,21 +329,17 @@ Movie-Single Hero Image and Title Styles
 	-moz-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+	transform: translateX(-50%);
+	bottom: 0;
+	margin: 0px;
 
-  bottom: 0;
-
-  margin: 0px;
-
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 1.20em;
-  letter-spacing: 0.4px;
+  	text-transform: uppercase;
+  	font-weight: 400;
+  	font-size: 1.20em;
+  	letter-spacing: 0.4px;
 }
 
-/* ---------------------------------------
-Movie-Single Poster and Description Styles 
------------------------------------------- */
+/*------- Movie-Single Poster and Description Styles -------*/
 .poster-wrapper {
 	float: left;
 	width: 30%;
@@ -297,14 +355,14 @@ Movie-Single Poster and Description Styles
 
 .movie-header {
 	text-transform: uppercase;
-  font-weight: 400;
-  font-size: 0.95em;
-  letter-spacing: 0.4px;
-  padding: 15px 25px;
-  border: 2px solid #333;
-  display: inline-block;
-  margin-top: 0px;
-  margin-bottom: 15px;
+	font-weight: 400;
+  	font-size: 0.95em;
+  	letter-spacing: 0.4px;
+  	padding: 15px 25px;
+  	border: 2px solid #333;
+  	display: inline-block;
+  	margin-top: 0px;
+  	margin-bottom: 15px;
 }
 
 .description-wrapper p {
@@ -327,12 +385,8 @@ Movie-Single Poster and Description Styles
 	padding-left: 0px;
 }
 
-/* -----------------------------
-
-Media Queries / Responsive Styles
--------------------------------- */
-
-/* Decrease content padding */
+/*------- Media Queries / Responsive Styles -------*/
+/*------- Decrease content padding -------*/
 @media (max-width: 1024px) {
 	.content-padding {
 		padding-left: 8%;
@@ -346,7 +400,7 @@ Media Queries / Responsive Styles
 	}
 }
 
-/* Apply margins to the correct posters on large devices */
+/*------- Apply margins to the correct posters on large devices -------*/
 @media (min-width: 992px) {
 	.poster:nth-child(3), .poster:last-child {
 		margin-right: 0px;
@@ -397,7 +451,6 @@ Media Queries / Responsive Styles
 		width: 75%;
 	}	
 }
-
 
 /* Increase width of the hero-title element on home page to prevent text from stacking */
 @media (max-width: 767px) {
@@ -455,10 +508,7 @@ Media Queries / Responsive Styles
 		font-size: 0.95em;
 	}
 }
-/* -----------------------------
-
-Page Not Found Template Styles
--------------------------------- */
+/*------- Page Not Found Template Styles ----------*/
 
 #hero-image-notFound {
 	height: 550px;

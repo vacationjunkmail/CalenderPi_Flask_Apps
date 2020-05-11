@@ -1,13 +1,21 @@
-from flask import Flask
+from flask import Flask,render_template,request
+
+def page_not_found(e):
+	req_url = request.referrer
+	bad_url = request.url
+	req_path = request.path
+	return render_template('404.html',e=e,bad_url=bad_url,req_url=req_url,req_path=req_path),404
 
 def create_app():
 
 	app = Flask(__name__,instance_relative_config=False)
 	app.config.from_object('config.Config')
+	app.register_error_handler(404,page_not_found)
+	app.register_error_handler(500,page_not_found)
 	
 	with app.app_context():
 		from .routes import admin_routes
 		from .routes import game_routes
-		app.register_blueprint(admin_routes.admin_bp,url_prefix='/games/')
+		app.register_blueprint(admin_routes.admin_bp,url_prefix='/games/admin/')
 		app.register_blueprint(game_routes.game_bp,url_prefix='/games/')
 	return app
