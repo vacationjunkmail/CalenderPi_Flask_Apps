@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template,g
+from flask import Blueprint,render_template,g,jsonify,json
 from flask import current_app as app
 from mysql_conn.connect_mysql import get_connection
 
@@ -38,6 +38,4 @@ def console_update(console_id):
 	params = [console_id]
 	data = g.db.select_params(query,params)
 	return render_template('admin/console_update.html',data = data[1],menu = g.menu[1])
-
-
 
