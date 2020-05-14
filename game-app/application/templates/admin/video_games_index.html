@@ -18,7 +18,7 @@
 	        {% for row in data[1] %}
 			<tr>
 				<td><a href="{{ row['id'] }}/">{{ row['id'] }}</a></td>
-				<td><input name="{{ row['id'] }}" value="{{ row['name'] }}" /></td>
+				<td>{{ row['name'] }}</td>
 				<td><a href="/public/{{ row['small_image'] }}">sm</a></td>
 				<td><a href="/public/{{ row['large_image'] }}">lg</a></td>
 				<td>{{ console[row['console_id']] }}</td>
