@@ -8,7 +8,7 @@
         <h1 id="hero-title">{{ title }}</h1>
     </div>
     <div id="posters-wrapper" class="content-padding-body clearfix">
-	<form id="{{ menu_title }}" name="{{ menu_title }}" action="../update/" method="post">
+	<form id="{{ menu_title }}" name="{{ menu_title }}" action="../action/" method="post">
 	<table class="table table-striped table-bordered">
 		<tr>
 			<td><label for="title">Title:</label><input type="text" name="title" id="title" value="{{ data[0]['name'] }}" size="48" /></td>
@@ -37,7 +37,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><textarea cols="90" rows="5" id="{{ data[0]['id'] }}">{{ data[0]['game_description'] }}</textarea></td>
+			<td colspan="2"><textarea cols="90" name="game_desc" rows="5" id="{{ data[0]['id'] }}">{{ data[0]['game_description'] }}</textarea></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Submit">

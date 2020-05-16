@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
+Environment="SECRET_KEY=YourSecretCanBeSetHere."
 WorkingDirectory=/var/www/game-app
 ExecStart=/usr/bin/uwsgi game-app.ini
 

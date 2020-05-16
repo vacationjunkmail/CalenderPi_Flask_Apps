@@ -7,8 +7,18 @@
     <div id="hero-image-title">
         <h1 id="hero-title">{{ title }}</h1>
     </div>
+	<div id="posters-wrapper" class="content-padding-body clearfix">
+		<div class="alert alert-success">
+    		{% with messages = get_flashed_messages() %}
+        		{% if messages %}
+               		{% for message in messages %}
+               			{{ message }}
+               		{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</div>
 
-    <div id="posters-wrapper" class="content-padding-body clearfix">
+    <!--<div id="posters-wrapper" class="content-padding-body clearfix">-->
 	<table class="table table-striped table-bordered">
 		<tr>
 			{% for row in data[0] %}
