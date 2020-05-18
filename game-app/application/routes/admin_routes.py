@@ -1,5 +1,5 @@
 from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redirect
-from flask import current_app as app, flash
+from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
 #from application.sql_queries import app_queries
 from application.sql_queries.sql_statements import app_queries
@@ -47,7 +47,10 @@ def console_update(console_id):
 def game_update(vid_id):
 	statement = app_queries.select_game()
 	data = g.db.select_params(statement,[vid_id])
-	return render_template('admin/video_game_update.html',data = data[1],menu = g.menu[1],menu_title=g.menu_title,title='Video Game Update',consoles=g.console_query[1])
+	statement = app_queries.select_characters()
+	char_data = g.db.select_params(statement,[vid_id])
+	return render_template('admin/video_game_update.html',data = data[1],menu = g.menu[1],menu_title=g.menu_title,title='Video Game Update',consoles=g.console_query[1],
+	char_data = char_data[1])
 
 
 @admin_bp.route('/video_games/action/',methods=['Post'])
@@ -60,3 +63,8 @@ def update_game():
 	message = "{} {}".format(params[0],status)	
 	flash(message)
 	return redirect(url_for('admin_bp.base_index',url_route='video_games'))
+
+@admin_bp.route('/video_games/rm_char/')
+def rm_char():
+	id = request.args.get('id')
+	return jsonify('Character was removed')

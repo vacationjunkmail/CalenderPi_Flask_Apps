@@ -40,15 +40,25 @@
 			<td colspan="2"><textarea cols="90" name="game_desc" rows="5" id="{{ data[0]['id'] }}">{{ data[0]['game_description'] }}</textarea></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Submit">
+			<td colspan="2"><label for="characters">Characters:</label></td>
+		</tr>
+		{% for row in char_data %}
+			<tr id="row_{{ row['id'] }}">
+				<td colspan="2">{{ row['name'] }} 
+					<span name="rm" id="{{ row['id'] }}"  class="btn btn-danger btn-sm rm"><i class="fa fa-minus"></i> Remove</span>
+				</td>
+			</tr>
+		{% endfor %}
+		<tr>
+			<td colspan="2" align="center"><input type="submit" value="Submit">
 				<input name="id" id="id" type="hidden" value="{{ data[0]['id'] }}" readonly />
 			</td>
 		</tr>
 	</table>
 	</form>
     </div>
+	<script src="/public/js/game.js"></script>
 {% endblock %}
 {% block footericons %}
     <a href="{{ twitter }}" title="{{ title }} Twitter"><img src = "/public/images/{{ shortname }}/{{ shortname }}_icon.png" alt = "{{ shortname }} logo image" /></a>
 {% endblock %}
-

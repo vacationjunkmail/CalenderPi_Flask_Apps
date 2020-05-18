@@ -1,10 +1,13 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,flash
 
 def page_not_found(e):
 	req_url = request.referrer
 	bad_url = request.url
-	req_path = request.path
-	return render_template('404.html',e=e,bad_url=bad_url,req_url=req_url,req_path=req_path),404
+	req_path = "URL Route Does not Exist: {}".format(request.path)
+	e = "Template Not Found: {}".format(e)
+	flash(e)
+	flash(req_path)
+	return render_template('404.html'),404
 
 def create_app():
 

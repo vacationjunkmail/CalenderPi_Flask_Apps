@@ -8,9 +8,15 @@
         <h1 id="hero-title">This is not the page you are looking for.</h1>
     </div>
     <div id="posters-wrapper" class="content-padding clearfix">
-        {{ e }}<br />
-	{#{ bad_url }#}
-	Url path does not exists: {{ req_path }}
+		<div class="alert alert-danger">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					{{ message }}<br />
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		</div>
     </div>
 {% endblock %}
 {% block footericons %}
