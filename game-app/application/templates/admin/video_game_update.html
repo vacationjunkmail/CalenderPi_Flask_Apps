@@ -40,6 +40,9 @@
 			<td colspan="2"><textarea cols="90" name="game_desc" rows="5" id="{{ data[0]['id'] }}">{{ data[0]['game_description'] }}</textarea></td>
 		</tr>
 		<tr>
+			<td colspan="2"><input type="button" class="btn add-row" value="Add Row"></td>
+		</tr>
+		<tr>
 			<td colspan="2"><label for="characters">Characters:</label></td>
 		</tr>
 		{% for row in char_data %}

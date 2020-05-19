@@ -1,13 +1,13 @@
 from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redirect
 from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
-#from application.sql_queries import app_queries
 from application.sql_queries.sql_statements import app_queries
-
+#import mysql_conn
 admin_bp = Blueprint('admin_bp',__name__,static_folder='static')
 
 @admin_bp.before_request
 def before_request():
+	#print(mysql_conn.__file__)
 	g.db = get_connection()
 	query = '''select concat('admin/',table_name) as id,table_name as console_shortname from information_schema.tables 
 		where table_schema='games' and table_name <> 'video_game_and_characters' order by table_name;'''
@@ -62,9 +62,13 @@ def update_game():
 	status = g.db.update_statement(statement,params)
 	message = "{} {}".format(params[0],status)	
 	flash(message)
+	for cname in request.form.getlist('newrow_'):
+		print(cname)	
 	return redirect(url_for('admin_bp.base_index',url_route='video_games'))
 
 @admin_bp.route('/video_games/rm_char/')
 def rm_char():
 	id = request.args.get('id')
-	return jsonify('Character was removed')
+	statement = app_queries.delete_character()
+	results = g.db.mod_statement(statement,[id],'delete')
+	return jsonify(results)
