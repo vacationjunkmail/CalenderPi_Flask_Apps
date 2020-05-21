@@ -62,7 +62,7 @@ def update_game():
 	status = g.db.update_statement(statement,params)
 	message = "{} {}".format(params[0],status)	
 	flash(message)
-	for cname in request.form.getlist('newrow_'):
+	for cname in request.form.getlist('newrow'):
 		print(cname)	
 	return redirect(url_for('admin_bp.base_index',url_route='video_games'))
 
