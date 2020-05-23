@@ -15,6 +15,12 @@ $(function()
 		$(str).empty();
 	}
 
+	function add_row_function(str_id,str_name)
+	{
+		var html = "<tr id='row_"+str_id+"'><td colspan='2' >"+str_name+" <span name='rm' id='row_"+str_id+"' class='btn btn-danger btn-sm rm'><i class='fa fa-minus'></i>Remove</span></td></tr>";	
+		return html;
+	}
+
 	var row=1;
 	$(".add-row").click(function()
 	{
@@ -27,8 +33,6 @@ $(function()
 
 	$(".add-character").click(function()
 	{
-		//console.log(this);
-
 		form_data = {character_name:$('#character_search').val(),game_id:$('#id').val()};
 		$.ajax(
 		{
@@ -39,8 +43,9 @@ $(function()
 			{
 				r_id = resp['character_id'];
 				r_name = resp['character_name']
-				var html = "<tr id='row_"+r_id+"'><td colspan='2' >"+r_name+" <span name='rm' id='row_"+r_id+"' class='btn btn-danger btn-sm rm'><i class='fa fa-minus'></i>Remove</span></td></tr>";
-				$(html).insertAfter('#character_data');
+				var html_row = add_row_function(r_id,r_name);
+				$(html_row).insertAfter('#character_data');
+				console.log(resp);
 				emptyFunction('#searchResult');	
 			},
 			error: function(err)
@@ -124,10 +129,4 @@ $(function()
             });
         }
     });
-
-	//AutoComplete
-	/*function setText(element){
-		console.log($(element).text());
-	}*/
-
 });

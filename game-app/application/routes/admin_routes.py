@@ -82,3 +82,21 @@ def add_character():
 	g.db.mod_statement(statement,params,'insert')
 	return jsonify(results)
 
+@admin_bp.route('/video_games/add_new_character/',methods=['POST'])
+def add_new_character():
+	results = {}
+	results['game_id'] = request.form['game_id']
+	results['character_name'] = request.form['character_name']
+	statement = app_queries.insert_new_character()
+	g.db.mod_statement(statement,[results['character_name']],'insert')
+	statement = app_queries.get_character()
+	char_data = g.db.select_params(statement,[results['character_name']])
+	params = [results['game_id'],char_data[1][0]['id']]
+	statement = app_queries.insert_video_game_and_character()
+	g.db.mod_statement(statement,params,'insert')
+	results['character_id'] = char_data[1][0]['id']
+	return jsonify(results)
+
+
+
+

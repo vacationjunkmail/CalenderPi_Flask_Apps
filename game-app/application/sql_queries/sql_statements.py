@@ -17,3 +17,5 @@ class app_queries():
 		return 'insert into games.characters(name)values(%s)'
 	def insert_video_game_and_character():
 		return 'insert into games.video_game_and_characters(video_game_id,character_id)values(%s,%s);'
+	def get_character():
+		return 'select * from games.characters where `name` = %s;'
