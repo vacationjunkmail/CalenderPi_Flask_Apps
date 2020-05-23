@@ -549,3 +549,53 @@ footer .social-media-icons a:first-child:hover i {
   font-size: 1.20em;
   letter-spacing: 0.4px;
 }
+
+#searchResult
+{
+	list-style: none;
+ 	padding: 0px;
+ 	width: 250px;
+ 	position: absolute;
+ 	margin: 0;
+ 	
+}
+
+#searchResult li
+{
+	background: #eaeaea;/*lavender;*/
+ 	padding: 4px;
+ 	margin-bottom: 1px;
+ 	/*new*/
+ 	  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333333;
+  white-space: nowrap;
+  /*new 2*/
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  background-color: #ffffff;
+
+}
+
+#searchResult li:nth-child(even)
+{
+	background: #f9f9f9;/*cadetblue;*/
+ 	color: #000000;
+}
+
+#searchResult li:hover
+{
+	cursor: pointer;
+}
+
+input[type=text]
+{
+	padding: 5px;
+ 	width: 250px;
+ 	letter-spacing: 1px;
+}

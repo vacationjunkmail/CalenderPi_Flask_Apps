@@ -12,6 +12,8 @@ class app_queries():
 	def delete_character():
 		return 'delete from games.video_game_and_characters where character_id = %s;'
 	def character_check():
-		return 'select id,`name` from games.characters where lower(name) = %s;'
+		return 'select id,`name` from games.characters where lower(name) like %s;'
 	def insert_new_character():
 		return 'insert into games.characters(name)values(%s)'
+	def insert_video_game_and_character():
+		return 'insert into games.video_game_and_characters(video_game_id,character_id)values(%s,%s);'

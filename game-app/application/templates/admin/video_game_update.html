@@ -39,10 +39,8 @@
 		<tr>
 			<td colspan="2"><textarea cols="90" name="game_desc" rows="5" id="{{ data[0]['id'] }}">{{ data[0]['game_description'] }}</textarea></td>
 		</tr>
-		<tr>
-			<td colspan="2"><input type="button" class="btn add-row" value="Add Row"></td>
-		</tr>
-		<tr>
+		<!--<tr><td colspan="2"><input type="button" class="btn add-row" value="Add Row"></td></tr>-->
+		<tr id="character_data">
 			<td colspan="2"><label for="characters">Characters:</label></td>
 		</tr>
 		{% for row in char_data %}
@@ -52,6 +50,14 @@
 				</td>
 			</tr>
 		{% endfor %}
+		<tr>
+			<td colspan="2">
+				<input type="text" name="character_search" id="character_search" value="" />
+				<ul id="searchResult"></ul>
+				<input type="hidden" name="char_id" id="char_id" value="" />
+				<input type="button" class="btn add-character" value="Add New Character">
+			</td>
+		</tr>
 		<tr>
 			<td colspan="2" align="center"><input type="submit" value="Submit">
 				<input name="id" id="id" type="hidden" value="{{ data[0]['id'] }}" readonly />

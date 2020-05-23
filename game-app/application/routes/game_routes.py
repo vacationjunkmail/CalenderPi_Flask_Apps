@@ -1,5 +1,6 @@
-from flask import Blueprint,render_template,g
+from flask import Blueprint,render_template,g,request,jsonify
 from flask import current_app as app
+from application.sql_queries.sql_statements import app_queries
 #sys.path.insert(-1,'/usr/local/lib/python3.7/site-packages')
 from mysql_conn.connect_mysql import get_connection
 
@@ -35,6 +36,14 @@ def show_all_games(console_id):
 	 	   where c.id = %s order by v.name;'''
 	results = g.db.select_params(query,params)
 	return render_template('game/show_all_games.html', menu = g.menu[1],title = console_results[0]['console_name'],shortname = console_results[0]['console_shortname'],data = results[1],twitter = console_results[0]['twitter'], facebook = console_results[0]['facebook'],menu_title = g.menu_title)
+
+@game_bp.route('/charactersearch/',methods=['POST'])
+def character_search():
+	query = app_queries.character_check()
+	p = '%{}%'.format(request.form['search'])
+	params = [p]
+	results = g.db.select_params(query,params)
+	return jsonify(results[1])
 
 @game_bp.route('/<int:console_id>/<int:game_id>/')
 def single_game(console_id,game_id):

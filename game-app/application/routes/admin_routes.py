@@ -2,12 +2,12 @@ from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redir
 from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
 from application.sql_queries.sql_statements import app_queries
-#import mysql_conn
+import mysql_conn
 admin_bp = Blueprint('admin_bp',__name__,static_folder='static')
 
 @admin_bp.before_request
 def before_request():
-	#print(mysql_conn.__file__)
+	print(mysql_conn.__file__)
 	g.db = get_connection()
 	query = '''select concat('admin/',table_name) as id,table_name as console_shortname from information_schema.tables 
 		where table_schema='games' and table_name <> 'video_game_and_characters' order by table_name;'''
@@ -31,7 +31,6 @@ def base_index(url_route):
 	data = g.db.select_no_params(statement)
 	title = url_route.replace("_"," ")
 	consoles = {}
-	#flash('Show me')
 	for item in g.console_query[1]:
 		consoles[item['id']] = item['console_shortname']
 	return render_template(page,data = data,title = title,menu = g.menu[1],menu_title = g.menu_title,console = consoles)
@@ -72,3 +71,14 @@ def rm_char():
 	statement = app_queries.delete_character()
 	results = g.db.mod_statement(statement,[id],'delete')
 	return jsonify(results)
+
+@admin_bp.route('/video_games/add_character/',methods=['POST'])
+def add_character():
+	results = {}
+	for item in request.form:
+		results[item] = request.form[item]
+	params = [results['game_id'],results['character_id']]
+	statement = app_queries.insert_video_game_and_character()
+	g.db.mod_statement(statement,params,'insert')
+	return jsonify(results)
+
