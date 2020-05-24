@@ -1,6 +1,8 @@
 class app_queries():
 	def game_update():
 		return 'update games.video_games set name=%s,console_id=%s,small_image=%s,large_image=%s,header_image=%s,game_description=%s where id=%s'
+	def update_console():
+		return 'update games.game_console set console_name=%s,console_shortname=%s,twitter=%s,facebook=%s  where id = %s'
 	def select_game():
 		return 'select * from games.video_games where id = %s;'
 	def base_index(base):
@@ -19,3 +21,5 @@ class app_queries():
 		return 'insert into games.video_game_and_characters(video_game_id,character_id)values(%s,%s);'
 	def get_character():
 		return 'select * from games.characters where `name` = %s;'
+	def get_console():
+		return '''select * from games.game_console where id = %s;'''

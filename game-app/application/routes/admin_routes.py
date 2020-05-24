@@ -2,12 +2,12 @@ from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redir
 from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
 from application.sql_queries.sql_statements import app_queries
-import mysql_conn
+#import mysql_conn
 admin_bp = Blueprint('admin_bp',__name__,static_folder='static')
 
 @admin_bp.before_request
 def before_request():
-	print(mysql_conn.__file__)
+	#print(mysql_conn.__file__)
 	g.db = get_connection()
 	query = '''select concat('admin/',table_name) as id,table_name as console_shortname from information_schema.tables 
 		where table_schema='games' and table_name <> 'video_game_and_characters' order by table_name;'''
@@ -36,11 +36,20 @@ def base_index(url_route):
 	return render_template(page,data = data,title = title,menu = g.menu[1],menu_title = g.menu_title,console = consoles)
 
 @admin_bp.route('/game_console/<int:console_id>/',methods=['GET'])
-def console_update(console_id):
-	query ='select * from games.game_console where id = %s'
+def console_index(console_id):
+	statement = app_queries.get_console()
 	params = [console_id]
-	data = g.db.select_params(query,params)
-	return render_template('admin/console_update.html',data = data[1],menu = g.menu[1])
+	data = g.db.select_params(statement,params)
+	return render_template('admin/console_update.html',data = data[1],menu = g.menu[1],title = 'Console Update',menu_title = g.menu_title)
+
+@admin_bp.route('/game_console/console_update/',methods=['POST'])
+def console_update():
+	statement = app_queries.update_console()
+	params = [request.form['console_name'],request.form['console_shortname'],request.form['twitter'],request.form['facebook'],request.form['id']]
+	status = g.db.update_statement(statement,params)
+	message = "{} {}".format(params[0],status)	
+	flash(message)
+	return redirect(url_for('admin_bp.base_index',url_route='game_console'))
 
 @admin_bp.route('/video_games/<int:vid_id>/',methods=['GET'])
 def game_update(vid_id):
@@ -61,8 +70,6 @@ def update_game():
 	status = g.db.update_statement(statement,params)
 	message = "{} {}".format(params[0],status)	
 	flash(message)
-	for cname in request.form.getlist('newrow'):
-		print(cname)	
 	return redirect(url_for('admin_bp.base_index',url_route='video_games'))
 
 @admin_bp.route('/video_games/rm_char/')

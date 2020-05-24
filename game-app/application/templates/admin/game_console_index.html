@@ -9,6 +9,16 @@
     </div>
 
     <div id="posters-wrapper" class="content-padding clearfix">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<div class="alert alert-success">
+					{% for message in messages %}
+						{{ message }}
+					{% endfor %}
+				</div>
+			{% endif %}
+		{% endwith %}
+
 	<table class="table table-striped table-bordered">
 		<tr>
 			{% for row in data[0] %}
