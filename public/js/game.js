@@ -139,7 +139,7 @@ $(function()
 	
 	//End of Character Edit
 
-	//Edit Character 
+	//Edit Character Button 
 	$('.editBtn').on('click',function(){
         //hide edit span
         $(this).closest("tr").find(".editSpan").hide();
@@ -152,7 +152,22 @@ $(function()
         
         //show edit button
         $(this).closest("tr").find(".saveBtn").show();
+		
+		//show cancel button
+		$(this).closest("tr").find(".cancelBtn").show();
         
     });
+	//End of Edit Character Button
+
+	//Cancel Character Button
+	$('.cancelBtn').on('click',function(){
+
+		$(this).closest().find(".editSpan").show();
+		$(this).closest().find(".editInput").hide();
+		$(this).closest().find(".editBtn").show();
+		$(this).closest().find(".cancelBtn").hide();
+	});
+	//End of Cancel Character Button
+
 
 });
