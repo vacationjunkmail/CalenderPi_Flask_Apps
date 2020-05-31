@@ -138,4 +138,21 @@ $(function()
 	});
 	
 	//End of Character Edit
+
+	//Edit Character 
+	$('.editBtn').on('click',function(){
+        //hide edit span
+        $(this).closest("tr").find(".editSpan").hide();
+        
+        //show edit input
+        $(this).closest("tr").find(".editInput").show();
+        
+        //hide edit button
+        $(this).closest("tr").find(".editBtn").hide();
+        
+        //show edit button
+        $(this).closest("tr").find(".saveBtn").show();
+        
+    });
+
 });
