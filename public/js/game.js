@@ -129,4 +129,13 @@ $(function()
             });
         }
     });
+
+	//Being of CharacterEdit
+	$(".edit_character").keyup(function()
+	{
+		console.log("test");
+		console.log(this);
+	});
+	
+	//End of Character Edit
 });
