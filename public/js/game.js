@@ -161,13 +161,19 @@ $(function()
 
 	//Cancel Character Button
 	$('.cancelBtn').on('click',function(){
-
-		$(this).closest().find(".editSpan").show();
-		$(this).closest().find(".editInput").hide();
-		$(this).closest().find(".editBtn").show();
-		$(this).closest().find(".cancelBtn").hide();
+		console.log("test");
+		$(this).closest("tr").find(".editSpan").show();
+		$(this).closest("tr").find(".editInput").hide();
+		$(this).closest("tr").find(".editBtn").show();
+		$(this).closest("tr").find(".cancelBtn").hide();
+		$(this).closest("tr").find(".saveBtn").hide();
 	});
 	//End of Cancel Character Button
 
-
+    $('.saveBtn').on('click',function(){
+        var trObj = $(this).closest("tr");
+        var ID = $(this).closest("tr").attr('id');
+        var inputData = $(this).closest("tr").find(".editInput").serialize();
+		console.log(inputData);
+	});
 });
