@@ -1,3 +1,4 @@
+//https://www.codexworld.com/inline-table-edit-delete-jquery-ajax-php-mysql/
 $(function()
 {
 	const regex = /([a-z]+)_(\d{1,})/;
@@ -173,39 +174,29 @@ $(function()
         var trObj = $(this).closest("tr");
         var ID = $(this).closest("tr").attr('id');
         var inputData = $(this).closest("tr").find(".editInput");//.serialize();
-		var data = [];
+		var data = {};
 		$(this).closest("tr").find(".editInput").each(function()
 		{
-			console.log(this.name+" "+this.value);
-			data.push({key:this.name,value:this.value});
+			//data.push({key:this.name,value:this.value});
+			data[this.name]=this.value;
 		});
-
 		//save action
         $.ajax({
             type:'POST',
             url:'/games/admin/characters/edit_characters/',
             dataType: "json",
-            //data:'action=edit&id='+ID+'&'+inputData,
 			data:data,
             success:function(resp){
-                if(resp.status == 'ok'){
-					console.log(resp);
-                    /*trObj.find(".editSpan.fname").text(response.data.first_name);
-                    trObj.find(".editSpan.lname").text(response.data.last_name);
-                    trObj.find(".editSpan.email").text(response.data.email);
-                    
-                    trObj.find(".editInput.fname").text(response.data.first_name);
-                    trObj.find(".editInput.lname").text(response.data.last_name);
-                    trObj.find(".editInput.email").text(response.data.email);
-                    
-                    trObj.find(".editInput").hide();
-                    trObj.find(".saveBtn").hide();
-                    trObj.find(".editSpan").show();
-                    trObj.find(".editBtn").show();*/
-                }else{
-                    console.table(resp);
-                }
-            }
+            	console.table(resp);
+                trObj.find(".editInput").hide();
+                trObj.find(".saveBtn").hide();
+				trObj.find(".cancelBtn").hide();
+                trObj.find(".editSpan").show();
+                trObj.find(".editBtn").show();				
+            },
+			error:function(err){
+				console.log(err);
+			}
         });
 		//end of save action
 

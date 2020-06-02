@@ -106,6 +106,10 @@ def add_new_character():
 
 @admin_bp.route('/characters/edit_characters/',methods=['POST'])
 def edit_character():
+	statement = app_queries.update_character()
+	params = [request.form['character_name'],request.form['display_order'],request.form['id']]
+	status = g.db.update_statement(statement,params)		
+	print(status)
 	return jsonify({'dana':'test'})
 
 
