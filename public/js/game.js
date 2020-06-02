@@ -45,7 +45,7 @@ $(function()
 				r_name = resp['character_name']
 				var html_row = add_row_function(r_id,r_name);
 				$(html_row).insertAfter('#character_data');
-				console.log(resp);
+				//console.log(resp);
 				emptyFunction('#searchResult');	
 			},
 			error: function(err)
@@ -161,7 +161,6 @@ $(function()
 
 	//Cancel Character Button
 	$('.cancelBtn').on('click',function(){
-		console.log("test");
 		$(this).closest("tr").find(".editSpan").show();
 		$(this).closest("tr").find(".editInput").hide();
 		$(this).closest("tr").find(".editBtn").show();
@@ -173,7 +172,42 @@ $(function()
     $('.saveBtn').on('click',function(){
         var trObj = $(this).closest("tr");
         var ID = $(this).closest("tr").attr('id');
-        var inputData = $(this).closest("tr").find(".editInput").serialize();
-		console.log(inputData);
+        var inputData = $(this).closest("tr").find(".editInput");//.serialize();
+		var data = [];
+		$(this).closest("tr").find(".editInput").each(function()
+		{
+			console.log(this.name+" "+this.value);
+			data.push({key:this.name,value:this.value});
+		});
+
+		//save action
+        $.ajax({
+            type:'POST',
+            url:'/games/admin/characters/edit_characters/',
+            dataType: "json",
+            //data:'action=edit&id='+ID+'&'+inputData,
+			data:data,
+            success:function(resp){
+                if(resp.status == 'ok'){
+					console.log(resp);
+                    /*trObj.find(".editSpan.fname").text(response.data.first_name);
+                    trObj.find(".editSpan.lname").text(response.data.last_name);
+                    trObj.find(".editSpan.email").text(response.data.email);
+                    
+                    trObj.find(".editInput.fname").text(response.data.first_name);
+                    trObj.find(".editInput.lname").text(response.data.last_name);
+                    trObj.find(".editInput.email").text(response.data.email);
+                    
+                    trObj.find(".editInput").hide();
+                    trObj.find(".saveBtn").hide();
+                    trObj.find(".editSpan").show();
+                    trObj.find(".editBtn").show();*/
+                }else{
+                    console.table(resp);
+                }
+            }
+        });
+		//end of save action
+
 	});
 });

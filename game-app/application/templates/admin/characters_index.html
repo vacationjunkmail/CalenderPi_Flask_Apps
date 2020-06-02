@@ -23,26 +23,20 @@
 					<input type="hidden" name="id" id="id" value="{{ row['id'] }}" class="editInput" />
 				</td>
 				<td>
-					<span class="editSpan cname">{{ row['name'] }}</span>
-					<input type = "text" class="editInput cname form-control input-sm" name="c_name" value = "{{ row['name'] }}" style="display: none;" />
-					<!--
-					<input type="text" name="charname_{#{ row['id'] }#}" id="{#{ row['id'] }#}" value="{#{ row['name'] }#}" class = "edit_character" />
-					-->
+					<span class="editSpan">{{ row['name'] }}</span>
+					<input type = "text" class="editInput form-control input-sm" name="character_name" id="character_name" value = "{{ row['name'] }}" style="display: none;" />
 				</td>
 				<td><span class="editSpan display_order">{{ row['display_order'] }}</span>
-					<input type="text" name="display_order" id="display_order" value="{{ row['display_order'] }}" class="editInput" style="display:none;" />
+					<input type="text" name="display_order" id="display_order" value="{{ row['display_order'] }}" class="editInput form-control input-sm" style="display:none;" />
 				</td>
 				<td>
                 	<div class="btn-group btn-group-sm">
                     	<button type="button" class="btn btn-sm btn-default editBtn" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <!--
-						<button type="button" class="btn btn-sm btn-default deleteBtn" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>
-						-->
+                        <!--<button type="button" class="btn btn-sm btn-default deleteBtn" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>-->
 						<button type="button" class="btn btn-sm btn-default cancelBtn" style="float: none; display:none;"><span class="glyphicon glyphicon-ban-circle"></span></button>
                      </div>
                      <button type="button" class="btn btn-sm btn-success saveBtn" style="float: none; display: none;">Save</button>
                      <button type="button" class="btn btn-sm btn-danger confirmBtn" style="float: none; display: none;">Confirm</button>
-					
 				</td>
 			</tr>
         	{% endfor %}

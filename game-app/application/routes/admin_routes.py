@@ -104,6 +104,8 @@ def add_new_character():
 	results['character_id'] = char_data[1][0]['id']
 	return jsonify(results)
 
-
+@admin_bp.route('/characters/edit_characters/',methods=['POST'])
+def edit_character():
+	return jsonify({'dana':'test'})
 
 
