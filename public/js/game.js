@@ -187,7 +187,10 @@ $(function()
             dataType: "json",
 			data:data,
             success:function(resp){
-            	console.table(resp);
+            	console.log(data);
+				trObj.find(".editSpan.character_name").text(data['character_name']);
+				trObj.find(".editSpan.display_order").text(data['display_order']);
+
                 trObj.find(".editInput").hide();
                 trObj.find(".saveBtn").hide();
 				trObj.find(".cancelBtn").hide();
