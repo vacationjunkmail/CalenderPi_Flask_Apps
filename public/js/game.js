@@ -60,13 +60,13 @@ $(function()
 	{
 		$('#'+this.id).remove();
 		v = regex_function(this.id);
-
+		game_id = $('#id').val(); 
 		if(typeof v === 'object' && v != null && v[1] =='row')
 		{
 			$.ajax(
 			{
 				url: '/games/admin/video_games/rm_char/',
-				data: {id: v[2]},
+				data: {id: v[2],game_id:game_id},
 				type: 'GET',
 				dataType: 'json',
 				success: function(resp)
@@ -171,13 +171,15 @@ $(function()
 	//End of Cancel Character Button
 
     $('.saveBtn').on('click',function(){
+		$('#message').hide();	
+		$('#message').empty();
+		$("#message").removeClass();
         var trObj = $(this).closest("tr");
         var ID = $(this).closest("tr").attr('id');
         var inputData = $(this).closest("tr").find(".editInput");//.serialize();
 		var data = {};
 		$(this).closest("tr").find(".editInput").each(function()
 		{
-			//data.push({key:this.name,value:this.value});
 			data[this.name]=this.value;
 		});
 		//save action
@@ -187,7 +189,19 @@ $(function()
             dataType: "json",
 			data:data,
             success:function(resp){
-            	console.log(data);
+				if(Array.isArray(resp.msg))
+				{
+					for(var i = 0; i<resp.msg.length; i++){
+						//console.log(resp.msg[i][0]+":"+resp.msg[i][2]);
+						$('#message').append("<strong>"+resp.msg[i][0]+":</strong> "+resp.msg[i][2]+"<br/>");
+						$('#message').addClass('alert alert-danger');
+					}
+				}
+				else
+				{
+					$("#message").append("<strong>"+resp.msg+"</strong>").addClass('alert alert-success');
+				}
+				$('#message').show();
 				trObj.find(".editSpan.character_name").text(data['character_name']);
 				trObj.find(".editSpan.display_order").text(data['display_order']);
 

@@ -75,8 +75,10 @@ def update_game():
 @admin_bp.route('/video_games/rm_char/')
 def rm_char():
 	id = request.args.get('id')
+	video_game_id = request.args.get('game_id')
+	params = [id,video_game_id]
 	statement = app_queries.delete_character()
-	results = g.db.mod_statement(statement,[id],'delete')
+	results = g.db.mod_statement(statement,params,'delete')
 	return jsonify(results)
 
 @admin_bp.route('/video_games/add_character/',methods=['POST'])

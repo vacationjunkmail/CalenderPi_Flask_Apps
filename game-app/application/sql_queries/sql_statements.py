@@ -14,7 +14,7 @@ class app_queries():
 		query ='''select c.id,c.name from games.video_game_and_characters as v inner join games.characters as c on c.id=v.character_id where v.video_game_id=%s'''
 		return query
 	def delete_character():
-		return 'delete from games.video_game_and_characters where character_id = %s;'
+		return 'delete from games.video_game_and_characters where character_id = %s and video_game_id = %s;'
 	def character_check():
 		return 'select id,`name` from games.characters where lower(name) like %s;'
 	def insert_new_character():
