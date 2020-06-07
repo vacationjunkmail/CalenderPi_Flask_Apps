@@ -1,4 +1,7 @@
 from flask import Flask,render_template,request,flash
+from flask_wtf.csrf import CSRFProtect
+
+csrf = CSRFProtect()
 
 def page_not_found(e):
 	req_url = request.referrer
@@ -12,6 +15,7 @@ def page_not_found(e):
 def create_app():
 
 	app = Flask(__name__,instance_relative_config=False)
+	csrf.init_app(app)
 	app.config.from_object('config.Config')
 	app.register_error_handler(404,page_not_found)
 	app.register_error_handler(500,page_not_found)

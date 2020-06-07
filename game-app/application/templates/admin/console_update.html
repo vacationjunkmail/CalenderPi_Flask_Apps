@@ -9,6 +9,7 @@
     </div>
     <div id="posters-wrapper" class="content-padding-body clearfix">
 	<form id="{{ menu_title }}" name="{{ menu_title }}" action="../console_update/" method="post">
+	<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 	<table class="table table-striped table-bordered" id="data_tbl">
 		<tr>
 			<td colspan="2">

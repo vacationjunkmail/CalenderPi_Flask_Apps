@@ -182,12 +182,22 @@ $(function()
 		{
 			data[this.name]=this.value;
 		});
+		var csrf_token = $(".csrf_token").text();
+		console.log(csrf_token);
 		//save action
         $.ajax({
             type:'POST',
             url:'/games/admin/characters/edit_characters/',
             dataType: "json",
 			data:data,
+			beforeSend: function(xhr, settings) {
+            	if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                	xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            	}
+				else{
+					console.log(settings.type);
+				}	
+        	},
             success:function(resp){
 				if(Array.isArray(resp.msg))
 				{
