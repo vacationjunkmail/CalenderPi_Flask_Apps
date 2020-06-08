@@ -23,6 +23,7 @@ def create_app():
 	with app.app_context():
 		from .routes import admin_routes
 		from .routes import game_routes
+		#csrf.exempt(game_routes.game_bp)
 		app.register_blueprint(admin_routes.admin_bp,url_prefix='/games/admin/')
 		app.register_blueprint(game_routes.game_bp,url_prefix='/games/')
 	return app

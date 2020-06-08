@@ -3,6 +3,8 @@ $(function()
 {
 	const regex = /([a-z]+)_(\d{1,})/;
 
+	var csrf_token = $(".csrf_token").text();
+
 	function regex_function(str)
 	{
 		let m;
@@ -85,12 +87,20 @@ $(function()
 	$("#character_search").keyup(function(){
     	var search = $(this).val().trim();
         if(search != "" && search.length >= 2){
-
+			csrf_token = $("input[name='csrf_token'").val();
             $.ajax({
                 url: '/games/charactersearch/',
                 type: 'post',
                 data: {search:search, type:1},
                 dataType: 'json',
+				beforeSend: function(xhr, settings) {
+            		if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                		xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            		}
+					else{
+						console.log(settings.type);
+					}	
+        		},
                 success:function(response){
                 	var form_id = '#searchResult';
                     var len = response.length;
@@ -182,8 +192,7 @@ $(function()
 		{
 			data[this.name]=this.value;
 		});
-		var csrf_token = $(".csrf_token").text();
-		console.log(csrf_token);
+		//var csrf_token = $(".csrf_token").text();
 		//save action
         $.ajax({
             type:'POST',

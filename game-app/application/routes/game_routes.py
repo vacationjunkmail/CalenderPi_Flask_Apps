@@ -38,6 +38,7 @@ def show_all_games(console_id):
 	return render_template('game/show_all_games.html', menu = g.menu[1],title = console_results[0]['console_name'],shortname = console_results[0]['console_shortname'],data = results[1],twitter = console_results[0]['twitter'], facebook = console_results[0]['facebook'],menu_title = g.menu_title)
 
 @game_bp.route('/charactersearch/',methods=['POST'])
+#@app.csrf.exempt
 def character_search():
 	query = app_queries.character_check()
 	p = '%{}%'.format(request.form['search'])
