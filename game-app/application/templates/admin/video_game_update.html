@@ -71,6 +71,15 @@
 			</td>
 		</tr>
 		<tr>
+			<td colspan="2"><label for="game_thoughts">Game Thoughts:</label></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea name="comment" id="comment" cols="40" rows="3" maxlength="140"></textarea><br />
+				<input type="button" class="btn add-comment" value="Add New Comment">
+			</td>
+		</tr>
+		<tr>
 			<td colspan="2" align="center"><input type="submit" value="Submit">
 				<input name="id" id="id" type="hidden" value="{{ data[0]['id'] }}" readonly />
 			</td>

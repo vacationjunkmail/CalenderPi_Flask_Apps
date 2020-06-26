@@ -34,6 +34,12 @@ $(function()
 		row +=1;
 	});
 
+	$(".add-comment").click(function()
+	{
+		var comment = $('#comment').val();	
+		console.log(comment);
+	});
+
 	$(".add-character").click(function()
 	{
 		form_data = {character_name:$('#character_search').val(),game_id:$('#id').val()};
@@ -42,6 +48,14 @@ $(function()
 			url: '/games/admin/video_games/add_new_character/',
 			data: form_data,
 			type: 'POST',
+			beforeSend: function(xhr, settings) {
+            	if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+               		xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            	}
+				else {
+					console.log(settings.type);
+				}	
+        	},
 			success: function(resp)
 			{
 				r_id = resp['character_id'];
@@ -122,6 +136,14 @@ $(function()
 							url: '/games/admin/video_games/add_character/',
 							data: data,
 							type: 'POST',
+							beforeSend: function(xhr, settings) {
+			            		if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            			    		xhr.setRequestHeader("X-CSRFToken", csrf_token);
+			            		}
+								else {
+									console.log(settings.type);
+								}	
+        					},
 							success: function(resp)
 							{
 								r_id = resp['character_id'];
