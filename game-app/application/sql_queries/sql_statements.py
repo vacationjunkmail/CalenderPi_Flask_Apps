@@ -30,4 +30,4 @@ class app_queries():
 	def delete_comment():
 		return '''delete from games.video_game_comments where id =%s and game_id=%s;'''
 	def select_comments():
-		return '''select id, comment,status from games.video_game_comments where game_id=%s;'''
+		return '''select id, comment,status from games.video_game_comments where game_id=%s order by id asc;'''
