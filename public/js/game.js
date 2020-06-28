@@ -53,12 +53,8 @@ $(function()
 			success: function(resp)
 			{
 				$("<tr><td colspan='2' id='commentid_"+resp['comment_id']+"'>"+form_data.comment+"</td></tr>").insertAfter('#game_thoughts');
-				/*r_id = resp['character_id'];
-				r_name = resp['character_name']
-				var html_row = add_row_function(r_id,r_name);
-				$(html_row).insertAfter('#character_data');
-				*/
-				console.log(resp);
+				$('#comment').val('');
+				
 			},
 			error: function(err)
 			{
