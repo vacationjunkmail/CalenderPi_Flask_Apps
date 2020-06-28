@@ -57,9 +57,11 @@ def game_update(vid_id):
 	data = g.db.select_params(statement,[vid_id])
 	statement = app_queries.select_characters()
 	char_data = g.db.select_params(statement,[vid_id])
+	statement = app_queries.select_comments()
+	comment_data = g.db.select_params(statement,[vid_id])
 	mytitle = "Update {}".format(data[1][0]['name'])
 	return render_template('admin/video_game_update.html',data = data[1],menu = g.menu[1],menu_title=g.menu_title,title=mytitle,consoles=g.console_query[1],
-	char_data = char_data[1])
+	char_data = char_data[1],comments = comment_data[1])
 
 
 @admin_bp.route('/video_games/action/',methods=['Post'])
@@ -106,6 +108,18 @@ def add_new_character():
 	g.db.mod_statement(statement,params,'insert')
 	results['character_id'] = char_data[1][0]['id']
 	return jsonify(results)
+
+@admin_bp.route('/video_games/add_comment/',methods=['POST'])
+def add_comment():
+	results = {}
+	results['game_id'] = request.form['game_id']
+	results['comment'] = request.form['comment']
+	params = [results['game_id'],results['comment']]
+	statement = app_queries.insert_comment()
+	return_data = g.db.mod_statement(statement,params,'insert')
+	results['comment_id'] = return_data[1].lastrowid
+	return jsonify(results)
+
 
 @admin_bp.route('/characters/edit_characters/',methods=['POST'])
 def edit_character():

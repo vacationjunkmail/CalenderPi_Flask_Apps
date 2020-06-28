@@ -25,3 +25,9 @@ class app_queries():
 		return 'select * from games.characters where `name` = %s;'
 	def get_console():
 		return '''select * from games.game_console where id = %s;'''
+	def insert_comment():
+		return '''insert into games.video_game_comments(game_id,comment)values(%s,%s);'''
+	def delete_comment():
+		return '''delete from games.video_game_comments where id =%s and game_id=%s;'''
+	def select_comments():
+		return '''select id, comment,status from games.video_game_comments where game_id=%s;'''

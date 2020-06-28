@@ -3,8 +3,8 @@ $(function()
 {
 	const regex = /([a-z]+)_(\d{1,})/;
 
-	var csrf_token = $(".csrf_token").text();
-
+	//var csrf_token = $(".csrf_token").text();
+	var csrf_token = $("input[name='csrf_token'").val();
 	function regex_function(str)
 	{
 		let m;
@@ -36,8 +36,37 @@ $(function()
 
 	$(".add-comment").click(function()
 	{
-		var comment = $('#comment').val();	
-		console.log(comment);
+		form_data = {comment:$('#comment').val(),game_id:$('#id').val()};
+		$.ajax(
+		{
+			url: '/games/admin/video_games/add_comment/',
+			data: form_data,
+			type: 'POST',
+			beforeSend: function(xhr, settings) {
+            	if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+               		xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            	}
+				else {
+					console.log(settings.type);
+				}	
+        	},
+			success: function(resp)
+			{
+				$("<tr><td colspan='2' id='commentid_"+resp['comment_id']+"'>"+form_data.comment+"</td></tr>").insertAfter('#game_thoughts');
+				/*r_id = resp['character_id'];
+				r_name = resp['character_name']
+				var html_row = add_row_function(r_id,r_name);
+				$(html_row).insertAfter('#character_data');
+				*/
+				console.log(resp);
+			},
+			error: function(err)
+			{
+				console.log("Error")
+				console.log(err);
+			}
+		});//insert end
+
 	});
 
 	$(".add-character").click(function()

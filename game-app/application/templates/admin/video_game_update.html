@@ -70,9 +70,14 @@
 				<input type="button" class="btn add-character" value="Add New Character">
 			</td>
 		</tr>
-		<tr>
+		<tr id="game_thoughts">
 			<td colspan="2"><label for="game_thoughts">Game Thoughts:</label></td>
 		</tr>
+		{% for row in comments %}
+			<tr id="commentid_{{ row['id'] }}">
+				<td colspan="2">{{ row['comment'] }}</td>
+			</tr>
+		{% endfor %}
 		<tr>
 			<td colspan="2">
 				<textarea name="comment" id="comment" cols="40" rows="3" maxlength="140"></textarea><br />
