@@ -24,6 +24,7 @@
 				<td>
 					<button id="previous" name="previous" role="button" class="btn btn-default btn-sm" style="display:none;">Previous</button>
 					<input type="hidden" name="pageid" id="pageid" value="{{ pageid }}" />
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 				</td>
 				<td colspan="4"></td>
 				<td><button id="next" name="next" role="button" class="btn btn-default btn-sm">Next</button></td>
@@ -35,6 +36,7 @@
 					{% endif %}
 				{% endfor %}
 			</tr>
+			<tbody id="data_row">
     	    {% for row in data[1] %}
 				<tr>
 					<td><a href="{{ row['id'] }}/" role="button" class="btn btn-default btn-sm">Edit</a></td>
@@ -48,6 +50,7 @@
 					</td>
 				</tr>
         	{% endfor %}
+			</tbody>
 		</table>
 		</form>
     </div>

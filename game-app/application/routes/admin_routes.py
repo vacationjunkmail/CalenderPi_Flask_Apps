@@ -26,16 +26,22 @@ def home():
 
 @admin_bp.route('/<string:url_route>/',methods=['GET','POST'])
 def base_index(url_route):
-	pageid = 50
+	pageid = 0
+	if request.method == 'POST':
+		pageid=request.form['pageid']
 	statement = app_queries.base_index(url_route)
 	page = 'admin/{}_index.html'.format(url_route)
-	data = g.db.select_no_params(statement)
+	data = g.db.select_params(statement,[pageid])
+
 	title = url_route.replace("_"," ")
 	consoles = {}
+
 	for item in g.console_query[1]:
 		consoles[item['id']] = item['console_shortname']
-	print(request.method)
-	return render_template(page,data = data,title = title,menu = g.menu[1],menu_title = g.menu_title,console = consoles,pageid=pageid)
+	if request.method == 'POST':
+		return jsonify(data,consoles)
+	else:
+		return render_template(page,data = data,title = title,menu = g.menu[1],menu_title = g.menu_title,console = consoles,pageid=pageid)
 
 @admin_bp.route('/game_console/<int:console_id>/',methods=['GET'])
 def console_index(console_id):

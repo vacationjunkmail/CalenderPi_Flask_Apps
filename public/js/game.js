@@ -33,24 +33,70 @@ $(function()
 		}
 		else if(this.id == "previous")
 		{
-			if(pageid >50)
+			if(pageid >0)
 			{
 				pageid=pageid-50;
 			}
 			else
 			{
-				pageid=50;
+				pageid=0;
 			}
 		}
 		else
 		{
-			console.log("Something happened....search is reset to 50");
+			console.log("Something happened....search is reset");
 		}
-		if(pageid==50)
+		if(pageid==0)
 		{
 			$("#previous").hide();
 		}
 		//ajax call to route to get new data
+		form_data = {pageid:pageid};
+		$.ajax(
+		{
+			url: '/games/admin/video_games/',
+			data: form_data,
+			type: 'POST',
+			beforeSend: function(xhr, settings) {
+            	if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+               		xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            	}
+				else {
+					console.log(settings.type);
+				}	
+        	},
+			success: function(resp)
+			{
+				$("#data_row").empty();
+				
+				for(var i = 0; i<resp[0][1].length; i++){
+					id=resp[0][1][i].id
+					cid=resp[0][1][i].console_id
+					lbx=' data-lightbox="data_'+id+'" data-title="'+resp[0][1][i].name+'"';
+					e='<td><a href="'+id+'/" role="button" class="btn btn-default btn-sm">Edit</a></td>'
+					n='<td>'+resp[0][1][i].name+'</td>'
+					s='<td><a href="/public/images/'+resp[1][cid]+'/small/'+resp[0][1][i].small_image+'"'+lbx+' >View Small Image</a></td>'
+					l='<td><a href="/public/images/'+resp[1][cid]+'/large/'+resp[0][1][i].large_image+'"'+lbx+' >View Large Image</a></td>'
+					c='<td>'+resp[1][cid]+'</td>'
+					if(resp[0][1][i].header_image == '' || resp[0][1][i].header_image == null)
+					{
+						h='<td></td>'
+					}
+					else
+					{
+						h='<td><a href="/public/images/'+resp[1][cid]+'/header/'+resp[0][1][i].header_image+'"'+lbx+' >View Header Image</a></td>'
+					}
+					line='<tr id="'+id+'">"'+e+n+s+l+c+h+'"</tr>'
+					$("#data_row").append(line)	
+				}
+			},
+			error: function(err)
+			{
+				console.log("Error")
+				console.log(err);
+			}
+		});//End of ajax post
+		
 		$("#pageid").val(pageid);
 		event.preventDefault();
 	});
@@ -91,7 +137,7 @@ $(function()
 			{
 				console.log("Error")
 				console.log(err);
-			}
+			}	
 		});//insert end
 
 	});
