@@ -24,8 +24,9 @@ def after_request(resp):
 def home():
 	return render_template('admin/admin_index.html', title='Admin Home',menu=g.menu[1],menu_title=g.menu_title)
 
-@admin_bp.route('/<string:url_route>/',methods=['GET'])
+@admin_bp.route('/<string:url_route>/',methods=['GET','POST'])
 def base_index(url_route):
+	pageid = 50
 	statement = app_queries.base_index(url_route)
 	page = 'admin/{}_index.html'.format(url_route)
 	data = g.db.select_no_params(statement)
@@ -33,7 +34,8 @@ def base_index(url_route):
 	consoles = {}
 	for item in g.console_query[1]:
 		consoles[item['id']] = item['console_shortname']
-	return render_template(page,data = data,title = title,menu = g.menu[1],menu_title = g.menu_title,console = consoles)
+	print(request.method)
+	return render_template(page,data = data,title = title,menu = g.menu[1],menu_title = g.menu_title,console = consoles,pageid=pageid)
 
 @admin_bp.route('/game_console/<int:console_id>/',methods=['GET'])
 def console_index(console_id):

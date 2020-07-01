@@ -24,6 +24,37 @@ $(function()
 		return html;
 	}
 
+	$("#previous,#next").click(function(event)
+	{
+		var pageid = parseInt($("#pageid").val());
+		if(this.id == "next"){
+			pageid=pageid+50;
+			$("#previous").show();
+		}
+		else if(this.id == "previous")
+		{
+			if(pageid >50)
+			{
+				pageid=pageid-50;
+			}
+			else
+			{
+				pageid=50;
+			}
+		}
+		else
+		{
+			console.log("Something happened....search is reset to 50");
+		}
+		if(pageid==50)
+		{
+			$("#previous").hide();
+		}
+		//ajax call to route to get new data
+		$("#pageid").val(pageid);
+		event.preventDefault();
+	});
+
 	var row=1;
 	$(".add-row").click(function()
 	{
