@@ -72,8 +72,15 @@ def game_update(vid_id,page_id):
 	statement = app_queries.select_comments()
 	comment_data = g.db.select_params(statement,[vid_id])
 	mytitle = "Update {}".format(data[1][0]['name'])
+	statement = app_queries.next_game()
+	nextid_data = g.db.select_params(statement,[vid_id])
+	nextid = 0
+	print(nextid_data)
+	if len(nextid_data[1]) > 0:
+		nextid = nextid_data[1][0]['id']
+	print(nextid)
 	return render_template('admin/video_game_update.html',data = data[1],menu = g.menu[1],menu_title=g.menu_title,title=mytitle,consoles=g.console_query[1],
-	char_data = char_data[1],comments = comment_data[1],pageid=page_id)
+	char_data = char_data[1],comments = comment_data[1],pageid=page_id,nextid=nextid)
 
 
 @admin_bp.route('/video_games/action/',methods=['Post'])

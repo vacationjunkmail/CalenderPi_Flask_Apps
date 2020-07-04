@@ -86,7 +86,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="Submit">
+			<td colspan="2" align="center">
+				<input type="submit" value="Submit"> 
+				{% if nextid > 0 %}
+					&nbsp; <a href="../../{{ nextid }}/{{ pageid }}/" class="btn btn-default btn-small">Next Game</a>
+				{% endif %}
 				<input name="id" id="id" type="hidden" value="{{ data[0]['id'] }}" readonly />
 			</td>
 		</tr>
