@@ -39,13 +39,13 @@
 			<tbody id="data_row">
     	    {% for row in data[1] %}
 				<tr>
-					<td><a href="{{ row['id'] }}/" role="button" class="btn btn-default btn-sm">Edit</a></td>
+					<td><a href="/games/admin/video_games/{{ row['id'] }}/{{ pageid }}/" role="button" class="btn btn-default btn-sm">Edit</a></td>
 					<td>{{ row['name'] }}</td>
-					<td><a href="/public/images/{{ console[row['console_id']] }}/small/{{ row['small_image'] }}" data-lightbox="data_{{ loop.index }}" data-title="{{ row['small_image'] }}">View Small Image</a></td>
-					<td><a href="/public/images/{{ console[row['console_id']] }}/large/{{ row['large_image'] }}" data-lightbox="data_{{ loop.index }}" data-title="{{ row['large_image'] }}">View Large Image</a></td>
+					<td><a href="/public/images/{{ console[row['console_id']] }}/small/{{ row['small_image'] }}" data-lightbox="data_{{ loop.index }}" data-title="{{ row['small_image'] }}" class="btn btn-default btn-sm">Small Image</a></td>
+					<td><a href="/public/images/{{ console[row['console_id']] }}/large/{{ row['large_image'] }}" data-lightbox="data_{{ loop.index }}" data-title="{{ row['large_image'] }}" class="btn btn-default btn-sm">Large Image</a></td>
 					<td>{{ console[row['console_id']] }}</td>
 					<td>{% if row['header_image'] != '' %}
-							<a href="/public/images/{{ console[row['console_id']] }}/header/{{ row['header_image'] }}" data-lightbox="data_{{ loop.index }}" data-title="{{ row['header_image'] }}">View Header Image</a>
+							<a href="/public/images/{{ console[row['console_id']] }}/header/{{ row['header_image'] }}" data-lightbox="data_{{ loop.index }}" data-title="{{ row['header_image'] }}" class="btn btn-default btn-sm">Header Image</a>
 						{% endif %}
 					</td>
 				</tr>

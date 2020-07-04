@@ -2,6 +2,7 @@ from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redir
 from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
 from application.sql_queries.sql_statements import app_queries
+import requests
 #import mysql_conn
 admin_bp = Blueprint('admin_bp',__name__,static_folder='static')
 
@@ -24,9 +25,10 @@ def after_request(resp):
 def home():
 	return render_template('admin/admin_index.html', title='Admin Home',menu=g.menu[1],menu_title=g.menu_title)
 
+@admin_bp.route('/<string:url_route>/<int:pageid>/',methods=['GET','POST'])
 @admin_bp.route('/<string:url_route>/',methods=['GET','POST'])
-def base_index(url_route):
-	pageid = 0
+def base_index(url_route,pageid=0):
+	#pageid = 0
 	if request.method == 'POST':
 		pageid=request.form['pageid']
 	statement = app_queries.base_index(url_route)
@@ -59,8 +61,10 @@ def console_update():
 	flash(message)
 	return redirect(url_for('admin_bp.base_index',url_route='game_console'))
 
-@admin_bp.route('/video_games/<int:vid_id>/',methods=['GET'])
-def game_update(vid_id):
+#admin_bp.route('/video_games/<int:vid_id>/<int:page_id>/')
+@admin_bp.route('/video_games/<int:vid_id>/<int:page_id>/',methods=['GET'])
+#def game_update(vid_id,page_id=None)
+def game_update(vid_id,page_id):
 	statement = app_queries.select_game()
 	data = g.db.select_params(statement,[vid_id])
 	statement = app_queries.select_characters()
@@ -69,7 +73,7 @@ def game_update(vid_id):
 	comment_data = g.db.select_params(statement,[vid_id])
 	mytitle = "Update {}".format(data[1][0]['name'])
 	return render_template('admin/video_game_update.html',data = data[1],menu = g.menu[1],menu_title=g.menu_title,title=mytitle,consoles=g.console_query[1],
-	char_data = char_data[1],comments = comment_data[1])
+	char_data = char_data[1],comments = comment_data[1],pageid=page_id)
 
 
 @admin_bp.route('/video_games/action/',methods=['Post'])
@@ -80,8 +84,9 @@ def update_game():
 	params.append(request.form['id'])
 	status = g.db.update_statement(statement,params)
 	message = "{} {}".format(params[0],status)	
+	pageid = request.form['pageid']
 	flash(message)
-	return redirect(url_for('admin_bp.base_index',url_route='video_games'))
+	return redirect(url_for('admin_bp.base_index',url_route='video_games',pageid=pageid))
 
 @admin_bp.route('/video_games/rm_char/')
 def rm_char():

@@ -73,10 +73,11 @@ $(function()
 					id=resp[0][1][i].id
 					cid=resp[0][1][i].console_id
 					lbx=' data-lightbox="data_'+id+'" data-title="'+resp[0][1][i].name+'"';
-					e='<td><a href="'+id+'/" role="button" class="btn btn-default btn-sm">Edit</a></td>'
+					imgclass=" class='btn btn-default btn-sm'"
+					e='<td><a href="/games/admin/video_games/'+id+'/'+pageid+'/" role="button" class="btn btn-default btn-sm">Edit</a></td>'
 					n='<td>'+resp[0][1][i].name+'</td>'
-					s='<td><a href="/public/images/'+resp[1][cid]+'/small/'+resp[0][1][i].small_image+'"'+lbx+' >View Small Image</a></td>'
-					l='<td><a href="/public/images/'+resp[1][cid]+'/large/'+resp[0][1][i].large_image+'"'+lbx+' >View Large Image</a></td>'
+					s='<td><a href="/public/images/'+resp[1][cid]+'/small/'+resp[0][1][i].small_image+'"'+lbx+imgclass+'>Small Image</a></td>'
+					l='<td><a href="/public/images/'+resp[1][cid]+'/large/'+resp[0][1][i].large_image+'"'+lbx+imgclass+' >Large Image</a></td>'
 					c='<td>'+resp[1][cid]+'</td>'
 					if(resp[0][1][i].header_image == '' || resp[0][1][i].header_image == null)
 					{
@@ -84,7 +85,7 @@ $(function()
 					}
 					else
 					{
-						h='<td><a href="/public/images/'+resp[1][cid]+'/header/'+resp[0][1][i].header_image+'"'+lbx+' >View Header Image</a></td>'
+						h='<td><a href="/public/images/'+resp[1][cid]+'/header/'+resp[0][1][i].header_image+'"'+lbx+imgclass+' >Header Image</a></td>'
 					}
 					line='<tr id="'+id+'">"'+e+n+s+l+c+h+'"</tr>'
 					$("#data_row").append(line)	
