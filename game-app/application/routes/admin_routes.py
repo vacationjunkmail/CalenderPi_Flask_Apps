@@ -75,12 +75,12 @@ def game_update(vid_id,page_id):
 	statement = app_queries.next_game()
 	nextid_data = g.db.select_params(statement,[vid_id])
 	nextid = 0
-	print(nextid_data)
+	nextlimit = 0
 	if len(nextid_data[1]) > 0:
 		nextid = nextid_data[1][0]['id']
-	print(nextid)
+		nextlimit = round(nextid/50) * 50
 	return render_template('admin/video_game_update.html',data = data[1],menu = g.menu[1],menu_title=g.menu_title,title=mytitle,consoles=g.console_query[1],
-	char_data = char_data[1],comments = comment_data[1],pageid=page_id,nextid=nextid)
+	char_data = char_data[1],comments = comment_data[1],pageid=page_id,nextid=nextid,nextlimit=nextlimit)
 
 
 @admin_bp.route('/video_games/action/',methods=['Post'])

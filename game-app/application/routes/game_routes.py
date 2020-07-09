@@ -3,6 +3,8 @@ from flask import current_app as app
 from application.sql_queries.sql_statements import app_queries
 #sys.path.insert(-1,'/usr/local/lib/python3.7/site-packages')
 from mysql_conn.connect_mysql import get_connection
+import base64
+from pathlib import Path
 
 game_bp = Blueprint('game_bp',__name__,static_folder='static')
 
@@ -35,6 +37,15 @@ def show_all_games(console_id):
 		   from games.game_console as c inner join games.video_games as v on v.console_id = c.id 
 	 	   where c.id = %s order by v.name;'''
 	results = g.db.select_params(query,params)
+
+	for item in results[1]:
+		converted_image = "/var/www/public/images/{}/small/{}".format(console_results[0]['console_shortname'],item['small_image'])
+		img_ext=Path(item['small_image']).suffix[1:]
+		item['img_ext']=img_ext
+		item['converted_image'] = converted_image
+		with open(converted_image,'rb') as img_file:
+			item['converted_image'] = base64.b64encode(img_file.read()).decode('utf-8')
+
 	return render_template('game/show_all_games.html', menu = g.menu[1],title = console_results[0]['console_name'],shortname = console_results[0]['console_shortname'],data = results[1],twitter = console_results[0]['twitter'], facebook = console_results[0]['facebook'],menu_title = g.menu_title)
 
 @game_bp.route('/charactersearch/',methods=['POST'])
