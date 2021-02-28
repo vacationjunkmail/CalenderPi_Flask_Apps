@@ -29,7 +29,6 @@ def home():
 @admin_bp.route('/<string:url_route>/',methods=['GET','POST'])
 def base_index(url_route,pageid=0):
 	#pageid = 0
-	print('asdfasdfsdaf')
 	if request.method == 'POST':
 		fetchapi = request.get_json()
 		if fetchapi:
