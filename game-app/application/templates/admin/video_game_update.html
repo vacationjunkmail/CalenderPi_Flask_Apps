@@ -76,7 +76,7 @@
 		</tr>
 		{% for row in comments %}
 			<tr id="commentid_{{ row['id'] }}">
-				<td colspan="2">{{ row['comment'] }}</td>
+				<td>{{ row['comment'] }}</td><td>{{ row['comm_date'] }}</td>
 			</tr>
 		{% endfor %}
 		<tr>

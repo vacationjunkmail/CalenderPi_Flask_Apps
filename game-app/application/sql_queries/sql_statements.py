@@ -30,6 +30,6 @@ class app_queries():
 	def delete_comment():
 		return '''delete from games.video_game_comments where id =%s and game_id=%s;'''
 	def select_comments():
-		return '''select id, comment,status from games.video_game_comments where game_id=%s order by id asc;'''
+		return '''select id, comment,status,date_format(insert_date,'%W %M %e %Y %T %p') as comm_date from games.video_game_comments where game_id=%s order by id asc;'''
 	def next_game():
 		return '''select id from games.video_games where id > %s limit 1;'''

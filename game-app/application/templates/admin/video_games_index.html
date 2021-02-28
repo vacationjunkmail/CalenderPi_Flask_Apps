@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				{% for row in data[0] %}
-					{% if loop.index != 7 %}
+					{% if loop.index < 7 %}
 						<td>{{ row }} {{rowloop }}</td>
 					{% endif %}
 				{% endfor %}

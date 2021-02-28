@@ -29,12 +29,17 @@ def home():
 @admin_bp.route('/<string:url_route>/',methods=['GET','POST'])
 def base_index(url_route,pageid=0):
 	#pageid = 0
+	print('asdfasdfsdaf')
 	if request.method == 'POST':
-		pageid=request.form['pageid']
+		fetchapi = request.get_json()
+		if fetchapi:
+			pageid = fetchapi['pageid']
+		else:
+			pageid=request.form['pageid']
 	statement = app_queries.base_index(url_route)
 	page = 'admin/{}_index.html'.format(url_route)
 	data = g.db.select_params(statement,[pageid])
-
+	print(request.form)
 	title = url_route.replace("_"," ")
 	consoles = {}
 

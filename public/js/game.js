@@ -210,56 +210,57 @@ $(function()
                 type: 'post',
                 data: {search:search, type:1},
                 dataType: 'json',
-				beforeSend: function(xhr, settings) {
-            		if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
-                		xhr.setRequestHeader("X-CSRFToken", csrf_token);
+		beforeSend: function(xhr, settings) {
+			if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+				xhr.setRequestHeader("X-CSRFToken", csrf_token);
             		}
-					else{
+			else{
+				console.log(settings.type);
+			}	
+       		},
+                success:function(response){
+			var form_id = '#searchResult';
+			var len = response.length;
+			$(form_id).empty();
+			for( var i = 0; i<len; i++){
+				var id = response[i]['id'];
+				var name = response[i]['name'];
+				$(form_id).append("<li value='"+id+"'>"+name+"</li>");
+			}
+
+			// binding click event to li
+			$(form_id + " li").bind("click",function()
+			{
+				$('#character_search').val($(this).text());
+				$('#char_id').val($(this).val());
+				$(form_id).empty();
+				var data = {game_id:$('#id').val(),character_id:$(this).val(),character_name:$(this).text()};
+				$.ajax(
+				{
+					url: '/games/admin/video_games/add_character/',
+					data: data,
+					type: 'POST',
+					beforeSend: function(xhr, settings) {
+			            	if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+						xhr.setRequestHeader("X-CSRFToken", csrf_token);
+		            		}
+					else {
 						console.log(settings.type);
 					}	
-        		},
-                success:function(response){
-                	var form_id = '#searchResult';
-                    var len = response.length;
-                    $(form_id).empty();
-                    for( var i = 0; i<len; i++){
-                        var id = response[i]['id'];
-                        var name = response[i]['name'];
-                        $(form_id).append("<li value='"+id+"'>"+name+"</li>");
-                    }
-
-                    // binding click event to li
-                    $(form_id + " li").bind("click",function(){
-						$('#character_search').val($(this).text());
-						$('#char_id').val($(this).val());
-						$(form_id).empty();
-						var data = {game_id:$('#id').val(),character_id:$(this).val(),character_name:$(this).text()};
-						$.ajax(
-						{
-							url: '/games/admin/video_games/add_character/',
-							data: data,
-							type: 'POST',
-							beforeSend: function(xhr, settings) {
-			            		if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
-            			    		xhr.setRequestHeader("X-CSRFToken", csrf_token);
-			            		}
-								else {
-									console.log(settings.type);
-								}	
-        					},
-							success: function(resp)
-							{
-								r_id = resp['character_id'];
-								r_name = resp['character_name']
-								var html = "<tr id='row_"+r_id+"'><td colspan='2' >"+r_name+" <span name='rm' id='row_"+r_id+"' class='btn btn-danger btn-sm rm'><i class='fa fa-minus'></i>Remove</span></td></tr>";
-								$(html).insertAfter('#character_data');
-								$('#character_search').val('');
-							},
-							error: function(err)
-							{
-								console.log(err);
-							}
-						});//insert end
+				},
+				success: function(resp)
+				{
+					r_id = resp['character_id'];
+					r_name = resp['character_name']
+					var html = "<tr id='row_"+r_id+"'><td colspan='2' >"+r_name+" <span name='rm' id='row_"+r_id+"' class='btn btn-danger btn-sm rm'><i class='fa fa-minus'></i>Remove</span></td></tr>";
+					$(html).insertAfter('#character_data');
+					$('#character_search').val('');
+				},
+				error: function(err)
+				{
+					console.log(err);
+				}
+			});//insert end
                     });
                 }
             });
@@ -276,27 +277,22 @@ $(function()
 	//End of Character Edit
 
 	//Edit Character Button 
-	$('.editBtn').on('click',function(){
-        //hide edit span
-        $(this).closest("tr").find(".editSpan").hide();
-        
-        //show edit input
-        $(this).closest("tr").find(".editInput").show();
-        
-        //hide edit button
-        $(this).closest("tr").find(".editBtn").hide();
-        
-        //show edit button
-        $(this).closest("tr").find(".saveBtn").show();
-		
+	$('#character_tbl').on('click','.editBtn',function(){ 
+		//hide edit span
+		$(this).closest("tr").find(".editSpan").hide();
+                //show edit input
+		$(this).closest("tr").find(".editInput").show();
+                //hide edit button
+		$(this).closest("tr").find(".editBtn").hide();
+                //show edit button
+		$(this).closest("tr").find(".saveBtn").show();
 		//show cancel button
 		$(this).closest("tr").find(".cancelBtn").show();
-        
-    });
+	});
 	//End of Edit Character Button
 
 	//Cancel Character Button
-	$('.cancelBtn').on('click',function(){
+	$('#character_tbl').on('click','.cancelBtn',function(){
 		$(this).closest("tr").find(".editSpan").show();
 		$(this).closest("tr").find(".editInput").hide();
 		$(this).closest("tr").find(".editBtn").show();
@@ -305,7 +301,7 @@ $(function()
 	});
 	//End of Cancel Character Button
 
-    $('.saveBtn').on('click',function(){
+    $('#character_tbl').on('click','.saveBtn',function(){
 		$('#message').hide();	
 		$('#message').empty();
 		$("#message").removeClass();
@@ -317,8 +313,8 @@ $(function()
 		{
 			data[this.name]=this.value;
 		});
-		//var csrf_token = $(".csrf_token").text();
-		//save action
+
+	//save action
         $.ajax({
             type:'POST',
             url:'/games/admin/characters/edit_characters/',
@@ -362,4 +358,37 @@ $(function()
 		//end of save action
 
 	});
+	
+	
+	
+	//character next
+	//document.getElementById('characternext').onclick = function(){
+	//document.addEventListener('characternext', function() {
+	 //document.querySelector("#characternext").addEventListener("click", (e) => {
+	 /* event.preventDefault();
+	  fetch('../characters/')
+		.then(function (response) {
+          return response.text();
+          }).then(function (text) {
+          console.log('GET response text:');
+          console.log(text); 
+          });
+	  event.preventDefault();
+	});
+	*/ 
+	/*document.addEventListener("click",morecharacters);
+	function morecharacters(event)
+	{
+		var element = event.target;
+		console.log(element);
+		if (element.id == 'characternext')
+		{
+			console.log(element);
+		}
+		
+		event.preventDefault();
+	}*/
+	
+	//character next end
+	
 });

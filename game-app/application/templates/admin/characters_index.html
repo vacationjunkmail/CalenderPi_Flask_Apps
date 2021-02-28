@@ -8,16 +8,18 @@
         <h1 id="hero-title">{{ title }}</h1>
     </div>
 
+	<form name="character_index_form" id="character_index_form" action="no_action" method="post">
     <div id="posters-wrapper" class="content-padding clearfix">
 	<div id="message" class=""></div>
-	<span class="csrf_token" style="display:none;">{{ csrf_token() }}</span>
-	<table class="table table-striped table-bordered">
+	<input type = "hidden" name="csrf_token" id="csrf_token" value ="{{ csrf_token() }}"/>
+	<table class="table table-striped table-bordered" id="character_tbl">
 		<tr>
 			{% for row in data[0] %}
 				<td>{{ row }}</td>
 			{% endfor %}
 			<td>Edit</td>
 		</tr>
+		<tbody id="data_row">
 	        {% for row in data[1] %}
 			<tr>
 				<td>
@@ -32,19 +34,26 @@
 					<input type="text" name="display_order" id="display_order" value="{{ row['display_order'] }}" class="editInput form-control input-sm" style="display:none;" />
 				</td>
 				<td>
-                	<div class="btn-group btn-group-sm">
-                    	<button type="button" class="btn btn-sm btn-default editBtn" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <!--<button type="button" class="btn btn-sm btn-default deleteBtn" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>-->
-						<button type="button" class="btn btn-sm btn-default cancelBtn" style="float: none; display:none;"><span class="glyphicon glyphicon-ban-circle"></span></button>
-                     </div>
-                     <button type="button" class="btn btn-sm btn-success saveBtn" style="float: none; display: none;">Save</button>
-                     <button type="button" class="btn btn-sm btn-danger confirmBtn" style="float: none; display: none;">Confirm</button>
+					<div class="btn-group btn-group-sm">
+					<button type="button" class="btn btn-sm btn-default editBtn" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button type="button" class="btn btn-sm btn-default cancelBtn" style="float: none; display:none;"><span class="glyphicon glyphicon-ban-circle"></span></button>
+					</div>
+					<button type="button" class="btn btn-sm btn-success saveBtn" style="float: none; display: none;">Save</button>
+					<button type="button" class="btn btn-sm btn-danger confirmBtn" style="float: none; display: none;">Confirm</button>
 				</td>
 			</tr>
         	{% endfor %}
+		</tbody>
+		<tr>
+			<td colspan="2">Previous</td>
+			<td colspan="2" style="text-align:right;"><button id="characternext" name="characternext" role="button" class="btn btn-default btn-sm">Next</button></td>
+		</tr>
 	</table>
     </div>
+		<input type="text" name="pageid" id="pageid" value="{{ pageid }} " />
+	</form>
 	<script src="/public/js/game.js"></script>
+	<script src="/public/js/characteradmin.js"></script>
 {% endblock %}
 {% block footericons %}
     <a href="{{ twitter }}" title="{{ title }} Twitter"><img src = "/public/images/{{ shortname }}/{{ shortname }}_icon.png" alt = "{{ shortname }} logo image" /></a>
