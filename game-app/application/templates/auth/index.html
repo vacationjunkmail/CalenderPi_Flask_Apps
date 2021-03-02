@@ -1,1 +1,51 @@
-loging
+{% extends "layout.html" %}
+{% block title %}
+	{{ title }}
+{% endblock %}
+{% include "nav.html" %}
+{% block content %}
+<link rel="stylesheet" href="/public/css/login2.css" />
+    <div class="auth-wrapper">
+        <div class="auth-content container">
+            <div class="card">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <img src="../assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+                            <h4 class="mb-3 f-w-400">Login</h4>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="Email address">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <!--
+							<button class="btn btn-facebook mb-2 mr-2"><i class="fab fa-facebook-f"></i>facebook</button>
+                            <button class="btn btn-googleplus mb-2 mr-2"><i class="fab fa-google-plus-g"></i>Google</button>
+                            <button class="btn btn-twitter mb-2 mr-2"><i class="fab fa-twitter"></i>Twitter</button>
+							-->
+							<br />
+                            <button class="btn btn-primary shadow-2 mb-4">Login</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        <img src="/public/images/{{ shortname }}/large/{{ data[0]['large_image'] }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <!--<div class="footer mt-5">
+                <p class="text-center">Made with <i class="fas fa-heart"></i> by <a href="https://codedthemes.com/" target="_blank">Codedthemes</a></p>
+            </div>-->
+        </div>
+    </div>
+    <!-- Required Js -->
+    <script src="/public/js/jquery/jquery.js"></script>
+    <!---<script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>-->
+{%  endblock %}
