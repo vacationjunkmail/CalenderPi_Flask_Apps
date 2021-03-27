@@ -37,7 +37,7 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
       })
       .then(response => response.json())
         .then(res => {
-            console.log(res[0][0])
+            //console.log(res[0][0])
             //console.log(res[0][1])
             data = res[0][1]
             col = res[0][0]
@@ -78,10 +78,6 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 					data_row+='</tr>';
 					document.getElementById("data_row").innerHTML += data_row;
 				}	
-			}
-			else 
-			{
-				console.log(res[0][1].length);
 			}
         })
         .catch((error) => {
