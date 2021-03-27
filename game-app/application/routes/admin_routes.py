@@ -38,7 +38,6 @@ def base_index(url_route,pageid=0):
 	statement = app_queries.base_index(url_route)
 	page = 'admin/{}_index.html'.format(url_route)
 	data = g.db.select_params(statement,[pageid])
-	print(request.form)
 	title = url_route.replace("_"," ")
 	consoles = {}
 

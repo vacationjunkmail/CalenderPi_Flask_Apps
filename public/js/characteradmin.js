@@ -22,9 +22,9 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 	{
 		console.log("Something happened....search is reset");
 	}
-	console.log(csrf_token.value)
+	//console.log(csrf_token.value)
     data = {"pageid":pageid};
-    console.log(data)
+    //console.log(data)
 	var url = '../characters/50/';
         fetch(url, {
         method: 'POST', 
@@ -85,7 +85,7 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 			}
         })
         .catch((error) => {
-			console.log(error)
+			//console.log(error)
             console.log("error happened")
         });
     
