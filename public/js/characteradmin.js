@@ -1,7 +1,62 @@
+/*document.querySelector("#find-char").addEventListener("click", (e) => {
+
+	alert("asdfa");
+	event.preventDefault();
+});
+*/
+function validate(r){
+	if(!r.ok)
+	{
+		throw Error('This was an error');
+	}
+	return r;
+}
+function getdata(r)
+{
+	return  r.json()
+}
+
+function createtbl(results)
+{
+	document.getElementById("data_row").innerHTML="";
+	document.getElementById("search_value").innerHTML="";
+	var tbl="";
+	for(var i=0;i<results.length; i++)
+	{
+		tbl+="<tr><td>"+results[i]['id']+"</td><td>"+results[i]['name']+"</td><td>"+results[i]['display_order']+"</td></tr>";
+	}
+	
+	document.getElementById("data_row").innerHTML =tbl ;
+}
+
+function shwerror(error)
+{
+	console.log("An error occured:\n",error);
+}
+
+
+function getchar()
+{
+	data = {'search': document.getElementById("search_value").value};
+	
+	fetch('/games/charactersearch/',
+	{
+		method: 'POST',
+		headers: {
+			'Content-Type':'application/json',
+			'X-CSRF-TOKEN':csrf_token.value
+		},
+		body:JSON.stringify(data),
+		credentials: 'include'
+	})
+	.then(validate)
+	.then(getdata)
+	.then(createtbl)
+	.catch(shwerror)
+}
+
 //more characters
 document.querySelector("#characternext").addEventListener("click", (e) => { 
-	//console.log(e.target);
-	//console.log(e.target.id);
 	var pageid = parseInt(document.getElementById("pageid").value);
 	if(e.target.id == "characternext"){
 		pageid=pageid+50;
@@ -22,9 +77,7 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 	{
 		console.log("Something happened....search is reset");
 	}
-	//console.log(csrf_token.value)
     data = {"pageid":pageid};
-    //console.log(data)
 	var url = '../characters/50/';
         fetch(url, {
         method: 'POST', 
@@ -37,8 +90,6 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
       })
       .then(response => response.json())
         .then(res => {
-            //console.log(res[0][0])
-            //console.log(res[0][1])
             data = res[0][1]
             col = res[0][0]
             var data_row='';

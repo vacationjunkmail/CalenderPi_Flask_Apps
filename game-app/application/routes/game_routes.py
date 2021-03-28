@@ -52,7 +52,11 @@ def show_all_games(console_id):
 #@app.csrf.exempt
 def character_search():
 	query = app_queries.character_check()
-	p = '%{}%'.format(request.form['search'])
+	fetchapi = request.get_json()
+	if fetchapi:
+		p = '%{}%'.format(fetchapi['search'])
+	else:
+		p = '%{}%'.format(request.form['search'])
 	params = [p]
 	results = g.db.select_params(query,params)
 	return jsonify(results[1])
