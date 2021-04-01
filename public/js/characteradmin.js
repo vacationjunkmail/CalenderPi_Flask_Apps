@@ -21,12 +21,18 @@ function createtbl(results)
 	document.getElementById("data_row").innerHTML="";
 	document.getElementById("search_value").innerHTML="";
 	var tbl="";
+	if(results[0][1]){
+		results = results[0][1];
+	}
 	for(var i=0;i<results.length; i++)
 	{
-		tbl+="<tr><td>"+results[i]['id']+"</td><td>"+results[i]['name']+"</td><td>"+results[i]['display_order']+"</td></tr>";
+		tbl+="<tr><td>"+results[i]['id']+"<input type='hidden' id='id' name='id' value='"+results[i]['id']+"' class='editInput'></td>";
+		tbl+="<td><span class='editSpan character_name'> <a href='../charactercheck/"+results[i]['id']+"'/>"+results[i]['name']+"</a></span> <input type='text' class='editInput form-control input-sm' name='character_name' id='character_name' value='"+results[i]['name']+"' style='display:none;' > </td>";
+		tbl+="<td><span class='editSpan display_order'>"+results[i]['display_order']+"</span><input type='text' name='display_order' id='display_order' value='"+results[i]['display_order']+"' class='editInput form-control input-sm' style='display:none;'></td>";
+		tbl+="<td><div class='btn-group btn-group-sm'><button type='button' class='btn btn-sm btn-default editBtn' style='float: none;'><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='btn btn-sm btn-default cancelBtn' style='float: none; display:none;'><span class='glyphicon glyphicon-ban-circle'></span></button></div><button type='button' class='btn btn-sm btn-success saveBtn' style='float: none; display: none;'>Save</button><button type='button' class='btn btn-sm btn-danger confirmBtn' style='float: none; display: none;'>Confirm</button></td></tr>";
 	}
 	
-	document.getElementById("data_row").innerHTML =tbl ;
+	document.getElementById("data_row").innerHTML=tbl ;
 }
 
 function shwerror(error)
@@ -79,16 +85,20 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 	}
     data = {"pageid":pageid};
 	var url = '../characters/50/';
-        fetch(url, {
-        method: 'POST', 
+    fetch(url, {
+    	method: 'POST', 
         headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': csrf_token.value
+        	'Content-Type': 'application/json',
+          	'X-CSRF-TOKEN': csrf_token.value
         },
         body: JSON.stringify(data),
         credentials: 'include'
-      })
-      .then(response => response.json())
+	})
+	.then(validate)
+	.then(getdata)
+	.then(createtbl)
+	.catch(shwerror)	
+    /*.then(response => response.json())
         .then(res => {
             data = res[0][1]
             col = res[0][0]
@@ -118,7 +128,6 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 						
 						data_row+='</td>';
 					}
-					//adding edit row data
 					data_row+='<td> <div class="btn-group btn-group-sm">'+
 					'<button type="button" class="btn btn-sm btn-default editBtn" style="float: none; display: inline-block;"><span class="glyphicon glyphicon-pencil"></span></button>'+
 					'<button type="button" class="btn btn-sm btn-default cancelBtn" style="float: none; display:none;"><span class="glyphicon glyphicon-ban-circle"></span></button>'+
@@ -132,10 +141,9 @@ document.querySelector("#characternext").addEventListener("click", (e) => {
 			}
         })
         .catch((error) => {
-			//console.log(error)
             console.log("error happened")
         });
-    
+    	*/
     document.getElementById("pageid").value=pageid;
 	event.preventDefault();
 });
