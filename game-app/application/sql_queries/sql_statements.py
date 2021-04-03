@@ -33,3 +33,8 @@ class app_queries():
 		return '''select id, comment,status,date_format(insert_date,'%W %M %e %Y %T %p') as comm_date from games.video_game_comments where game_id=%s order by id asc;'''
 	def next_game():
 		return '''select id from games.video_games where id > %s limit 1;'''
+	def associated_characters_games():
+		return '''select gc.console_shortname,c.`name`,vc.video_game_id,g.`name` as game_name,g.console_id,gc.console_name 
+				from games.characters as c inner join games.video_game_and_characters as vc on vc.character_id=c.id 
+				inner join games.video_games as g on g.id =vc.video_game_id inner join games.game_console as gc on gc.id= g.console_id 
+				where c.id=%s'''

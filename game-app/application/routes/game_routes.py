@@ -61,6 +61,15 @@ def character_search():
 	results = g.db.select_params(query,params)
 	return jsonify(results[1])
 
+@game_bp.route('/associated_characters_games/', methods=['POST'])
+def associated_characters_games():
+	fetchapi = request.get_json()
+	params = [fetchapi['data']]
+	query = app_queries.associated_characters_games()
+	results = g.db.select_params(query,params)
+	return jsonify(results[1])
+
+
 @game_bp.route('/<int:console_id>/<int:game_id>/')
 def single_game(console_id,game_id):
 

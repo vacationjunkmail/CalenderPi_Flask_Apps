@@ -27,7 +27,7 @@ function createtbl(results)
 	for(var i=0;i<results.length; i++)
 	{
 		tbl+="<tr><td>"+results[i]['id']+"<input type='hidden' id='id' name='id' value='"+results[i]['id']+"' class='editInput'></td>";
-		tbl+="<td><span class='editSpan character_name'> <a href='../charactercheck/"+results[i]['id']+"'/>"+results[i]['name']+"</a></span> <input type='text' class='editInput form-control input-sm' name='character_name' id='character_name' value='"+results[i]['name']+"' style='display:none;' > </td>";
+		tbl+="<td><span class='editSpan character_name'> "+results[i]['name']+"</span> <input type='text' class='editInput form-control input-sm' name='character_name' id='character_name' value='"+results[i]['name']+"' style='display:none;' > </td>";
 		tbl+="<td><span class='editSpan display_order'>"+results[i]['display_order']+"</span><input type='text' name='display_order' id='display_order' value='"+results[i]['display_order']+"' class='editInput form-control input-sm' style='display:none;'></td>";
 		tbl+="<td><div class='btn-group btn-group-sm'><button type='button' class='btn btn-sm btn-default editBtn' style='float: none;'><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='btn btn-sm btn-default cancelBtn' style='float: none; display:none;'><span class='glyphicon glyphicon-ban-circle'></span></button></div><button type='button' class='btn btn-sm btn-success saveBtn' style='float: none; display: none;'>Save</button><button type='button' class='btn btn-sm btn-danger confirmBtn' style='float: none; display: none;'>Confirm</button></td></tr>";
 	}
@@ -40,6 +40,41 @@ function shwerror(error)
 	console.log("An error occured:\n",error);
 }
 
+function associated_characters_games(results)
+{
+	var modal_data="Associated with no games;";
+	if(results.length)
+	{
+		modal_data = "";
+		for(var i=0;i<results.length;i++){
+			modal_data+=results[i]['game_name']+" on "+results[i]['console_shortname']+"<br />";
+			//modal_data+=results;
+		}
+	}
+	document.getElementById("modal_body").innerHTML=modal_data;
+}
+
+function getmore(d)
+{
+	document.getElementById("modal_body").innerHTML="";
+	document.getElementById("modal_title").innerHTML=d.dataset.gamename;
+	data = {'data':d.id};
+	fetch('/games/associated_characters_games/',
+	{
+		method: 'POST',
+		headers: {
+			'Content-Type':'application/json',
+			'X-CSRF-TOKEN':csrf_token.value
+		},
+		body:JSON.stringify(data),
+		credentials: 'include'
+	})
+	.then(validate)
+	.then(getdata)
+	.then(associated_characters_games)
+	.catch(shwerror)
+	//document.getElementById("modal_body").innerHTML="changed";
+}
 
 function getchar()
 {
