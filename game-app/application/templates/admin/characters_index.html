@@ -14,32 +14,23 @@
 	<input type = "hidden" name="csrf_token" id="csrf_token" value ="{{ csrf_token() }}"/>
 	Search: <input type = "text" name="search_value" id="search_value" value ="" />
 	<!--<button id="find-char" name="find-char" role="button" class="btn btn-default btn-sm" onclick="getchar()" >Find Character</button>-->
-	<span id="find-char" name="find-char" role="button" class="btn btn-default btn-sm" onclick="getchar()" >Find Character</span>
+	<span id="find-char" name="find-char" role="button" class="btn btn-success btn-sm" onclick="getchar()" ><span class="glyphicon glyphicon-search"></span> Find Character</span>
 
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal_title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body" id="modal_body">
-          Modal body..
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
+	<!-- The Modal -->
+  	<div class="modal" id="myModal">
+    	<div class="modal-dialog">
+      		<div class="modal-content">
+        		<div class="modal-header">
+	          		<h4 class="modal-title" id="modal_title">Modal Heading</h4>
+          			<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        		</div>
+        		<div class="modal-body" id="modal_body"></div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-eye-close"></span> Close</button>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
 
 	<table class="table table-striped table-bordered" id="character_tbl">
 		<tr>
@@ -75,8 +66,8 @@
         	{% endfor %}
 		</tbody>
 		<tr>
-			<td colspan="2">Previous</td>
-			<td colspan="2" style="text-align:right;"><button id="characternext" name="characternext" role="button" class="btn btn-default btn-sm">Next</button></td>
+			<td colspan="2" style="text-align:left;"><button id="characterprevious" name="characterprevious" role="button" class="btn btn-default btn-sm changedata"><span class="glyphicon glyphicon-menu-left"></span> Previous</button></td>
+			<td colspan="2" style="text-align:right;"><button id="characternext" name="characternext" role="button" class="btn btn-default btn-sm changedata">Next <span class="glyphicon glyphicon-menu-right"></span> </button><span id="characternext_here"></span></td>
 		</tr>
 	</table>
     </div>
