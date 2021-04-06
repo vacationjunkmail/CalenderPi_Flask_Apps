@@ -150,3 +150,20 @@ def edit_character():
 	params = [request.form['character_name'],request.form['display_order'],request.form['id']]
 	status = g.db.update_statement(statement,params)		
 	return jsonify({'msg':status})
+
+
+@admin_bp.route('/search_video_games/',methods=['POST'])
+def game_search():
+	#pageid = 0
+	fetchapi = request.get_json()
+	value = fetchapi['search']
+	print(value)	
+	#statement = app_queries.base_index(url_route)
+	#page = 'admin/{}_index.html'.format(url_route)
+	#data = g.db.select_params(statement,[pageid])
+	#title = url_route.replace("_"," ")
+	data = {'data':value}
+
+	#for item in g.console_query[1]:
+		#consoles[item['id']] = item['console_shortname']
+	return jsonify(data)

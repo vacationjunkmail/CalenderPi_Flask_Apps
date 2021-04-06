@@ -356,39 +356,53 @@ $(function()
 			}
         });
 		//end of save action
+	});
+});
 
-	});
-	
-	
-	
-	//character next
-	//document.getElementById('characternext').onclick = function(){
-	//document.addEventListener('characternext', function() {
-	 //document.querySelector("#characternext").addEventListener("click", (e) => {
-	 /* event.preventDefault();
-	  fetch('../characters/')
-		.then(function (response) {
-          return response.text();
-          }).then(function (text) {
-          console.log('GET response text:');
-          console.log(text); 
-          });
-	  event.preventDefault();
-	});
-	*/ 
-	/*document.addEventListener("click",morecharacters);
-	function morecharacters(event)
+
+function validate(r)
+{
+	if(!r.ok)
 	{
-		var element = event.target;
-		console.log(element);
-		if (element.id == 'characternext')
-		{
-			console.log(element);
-		}
-		
-		event.preventDefault();
-	}*/
+		throw Error('Error Will Robinson');
+	}
+	return r;
+}
+
+function getdata(r)
+{
+	return r.json()
+}
+
+function dsp_data(results)
+{
+	console.log(results)
+}
+
+document.querySelector("#search_game_btn").addEventListener("click",(e) =>{
+
+	form_data = {'search':document.getElementById("search_game").value};
+
+	var csrf_token = document.getElementById("csrf_token").value;
+	console.log(csrf_token)
+
+	document.getElementById("search_game").innerHTML="";
+	document.getElementById("data_row").innerHTML="";
+
+	var url = "/games/admin/search_video_games/";
+	fetch(url,{
+		method: 'POST',
+		headers: {
+			'Content-Type':'application/json',
+			'X-CSRF-TOKEN':csrf_token,
+		},
+		body:JSON.stringify(form_data),
+		credentails: 'include'
+	})
+	.then(validate)
+	.then(getdata)
+	.then(dsp_data)
+	.catch(showerror)
 	
-	//character next end
-	
+	event.preventDefault();
 });
