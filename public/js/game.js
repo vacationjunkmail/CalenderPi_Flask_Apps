@@ -314,7 +314,7 @@ $(function()
 			data[this.name]=this.value;
 		});
 
-	//save action
+		//save action
         $.ajax({
             type:'POST',
             url:'/games/admin/characters/edit_characters/',
@@ -376,7 +376,15 @@ function getdata(r)
 
 function dsp_data(results)
 {
-	console.log(results)
+	for(var i = 0; i<results.length; i++)
+	{
+		console.log(results[i]['id']+" "+results[i]['name']+" "+results[i]['console_shortname']+" "+results[i]['small_image']+" "+results[i]['large_image']+" "+results[i]['header_image']+"\n");
+	}
+}
+
+function showerror(error)
+{
+	console.log("An error occured:\n",error);
 }
 
 document.querySelector("#search_game_btn").addEventListener("click",(e) =>{
@@ -384,7 +392,6 @@ document.querySelector("#search_game_btn").addEventListener("click",(e) =>{
 	form_data = {'search':document.getElementById("search_game").value};
 
 	var csrf_token = document.getElementById("csrf_token").value;
-	console.log(csrf_token)
 
 	document.getElementById("search_game").innerHTML="";
 	document.getElementById("data_row").innerHTML="";

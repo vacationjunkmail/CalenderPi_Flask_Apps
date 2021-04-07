@@ -154,16 +154,9 @@ def edit_character():
 
 @admin_bp.route('/search_video_games/',methods=['POST'])
 def game_search():
-	#pageid = 0
 	fetchapi = request.get_json()
-	value = fetchapi['search']
-	print(value)	
-	#statement = app_queries.base_index(url_route)
-	#page = 'admin/{}_index.html'.format(url_route)
-	#data = g.db.select_params(statement,[pageid])
-	#title = url_route.replace("_"," ")
-	data = {'data':value}
-
-	#for item in g.console_query[1]:
-		#consoles[item['id']] = item['console_shortname']
-	return jsonify(data)
+	params = '%{}%'.format(fetchapi['search'])
+	data = {}
+	statement = app_queries.find_games()
+	data = g.db.select_params(statement,[params])
+	return jsonify(data[1])

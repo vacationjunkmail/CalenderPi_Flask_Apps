@@ -38,3 +38,7 @@ class app_queries():
 				from games.characters as c inner join games.video_game_and_characters as vc on vc.character_id=c.id 
 				inner join games.video_games as g on g.id =vc.video_game_id inner join games.game_console as gc on gc.id= g.console_id 
 				where c.id=%s'''
+	def find_games():
+		return '''select v.id,v.name,v.small_image,v.large_image,v.header_image,c.console_shortname 
+				from games.video_games as v inner join games.game_console as c on v.console_id=c.id 
+				where v.name like %s;'''
