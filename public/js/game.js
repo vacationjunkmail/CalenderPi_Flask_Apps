@@ -364,7 +364,7 @@ function validate(r)
 {
 	if(!r.ok)
 	{
-		throw Error('Error Will Robinson');
+		throw Error('Danger Will Robinson');
 	}
 	return r;
 }
@@ -376,9 +376,23 @@ function getdata(r)
 
 function dsp_data(results)
 {
+	document.getElementById("data_row").innerHTML="";
 	for(var i = 0; i<results.length; i++)
 	{
-		console.log(results[i]['id']+" "+results[i]['name']+" "+results[i]['console_shortname']+" "+results[i]['small_image']+" "+results[i]['large_image']+" "+results[i]['header_image']+"\n");
+		row = ''
+		row+="<tr><td><a href='/games/admin/video_games/"+results[i]['id']+"/0/' role='button' class='btn btn-default btn-sm'>Edit</a></td><td>"+results[i]['name']+"</td>";
+		row+="<td><a href='/public/images/"+results[i]['console_shortname']+"/small/"+results[i]['small_image']+"' data-lightbox='data_"+i+"' data-title='"+results[i]['name']+"' class='btn btn-default btn-sm'>Small Image</a></td>";
+		row+="<td><a href='/public/images/"+results[i]['console_shortname']+"/large/"+results[i]['large_image']+"' data-lightbox='data_"+i+"' data-title='"+results[i]['name']+"' class='btn btn-default btn-sm'>Large Image</a></td><td>"+results[i]['console_shortname']+"</td>";
+		if(results[i]['header_image'])
+		{ 
+			row+="<td><a href='/public/images/"+results[i]['console_shortname']+"/header/"+results[i]['header_image']+"' data-lightbox='data_"+i+"' data-title='"+results[i]['name']+"' class='btn btn-default btn-sm'>Header Image</a></td>";
+		}
+		else 
+		{
+			row+="<td></td>";
+		}
+		row+="</tr>";
+		document.getElementById("data_row").innerHTML+=row;
 	}
 }
 
@@ -387,14 +401,20 @@ function showerror(error)
 	console.log("An error occured:\n",error);
 }
 
-document.querySelector("#search_game_btn").addEventListener("click",(e) =>{
+//document.querySelector("#search_game_btn").addEventListener("click",(e) =>{
+const search_game = document.querySelector("#search_game_btn");
 
+if(search_game)
+{
+	search_game.addEventListener("click",(e) =>{
 	form_data = {'search':document.getElementById("search_game").value};
 
 	var csrf_token = document.getElementById("csrf_token").value;
 
 	document.getElementById("search_game").innerHTML="";
-	document.getElementById("data_row").innerHTML="";
+	//let loader = "<div class='loading'></div>";
+	let loader = '<div class="loading_image"><img alt ="" src="/public/images/loader.gif "></div>';
+	document.getElementById("data_row").innerHTML+=loader;
 
 	var url = "/games/admin/search_video_games/";
 	fetch(url,{
@@ -412,4 +432,5 @@ document.querySelector("#search_game_btn").addEventListener("click",(e) =>{
 	.catch(showerror)
 	
 	event.preventDefault();
-});
+	});
+}
