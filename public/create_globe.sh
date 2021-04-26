@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#https://web.mst.edu/~sgao/gmtexs/maps/
 lat=144.4951;
 lon=50.1391;
 lat=151.0098;
