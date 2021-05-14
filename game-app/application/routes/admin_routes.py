@@ -160,3 +160,9 @@ def game_search():
 	statement = app_queries.find_games()
 	data = g.db.select_params(statement,[params])
 	return jsonify(data[1])
+
+@admin_bp.route('/video_games/add_game/',methods=['GET'])
+def add_game():
+	mytitle='Adding New Game'
+	return render_template('admin/video_game_add.html',data = [],menu = g.menu[1],menu_title=g.menu_title,title=mytitle,consoles=g.console_query[1],
+	char_data = '',comments = '',pageid=1,nextid=1,nextlimit=1)

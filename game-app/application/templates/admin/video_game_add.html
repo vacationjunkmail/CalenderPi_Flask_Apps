@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block title %}
+    {{ title  }}
+{% endblock %}
+{% include "nav.html" %}
+{% block content %}
+{% set myconsole = namespace(console='') %}
+    <div id="hero-image-title">
+        <h1 id="hero-title">{{ title }}</h1>
+    </div>
+    <div id="posters-wrapper" class="content-padding-body clearfix">
+	<form id="{{ menu_title }}" name="{{ menu_title }}" action="../../action/" method="post">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+		<input type="hidden" name="pageid" id="pageid" value="{{ pageid }}" />
+		<input name="id" id="id" type="text" value=""  />
+	<table class="table table-striped table-bordered" id="data_tbl">
+		<tr>
+			<td width="500"><label for="title">Title:</label><input type="text" name="title" id="title" value="" size="48" /></td>
+			<td><label for="console">Console</label>
+				<select name="console_id" id="console_id">
+					{% for console in consoles %}
+						<option value="{{ console['id'] }}">{{ console['console_shortname'] }}</option>
+					{% endfor %}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><label for="small_image">Page Image:</label> 
+				<input typee="text" name="small_image" id="small_image" value="" size="45" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><label for="large_image">Front Image: </label>
+				<input type="text" name="large_image" id="large_image" value="" size="45" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><label for="header_image">Header Image:</label> 
+				<input type="text" name="header_image" id="header_image" value="" size="45" />
+			</td>
+		</tr>
+		<tbody class="more_details">
+		<tr>
+			<td colspan="2"><textarea cols="90" name="game_desc" rows="5" id="game_desc_id"></textarea></td>
+		</tr>
+		<tr id="character_data">
+			<td colspan="2"><label for="characters">Characters:</label></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="text" name="character_search" id="character_search" value="" />
+				<ul id="searchResult"></ul>
+				<input type="hidden" name="char_id" id="char_id" value="" />
+				<input type="button" class="btn add-character" value="Add New Character">
+			</td>
+		</tr>
+		<tr id="game_thoughts">
+			<td colspan="2"><label for="game_thoughts">Game Thoughts:</label></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea name="comment" id="comment" cols="40" rows="3" maxlength="140"></textarea><br />
+				<input type="button" class="btn add-comment" value="Add New Comment">
+			</td>
+		</tr>
+		</tbody>
+		<tr id="new_game_btn_row">
+			<td colspan="2" align="center">
+				<input type="button" class="btn add-new-game" value="Add New Game">
+			</td>
+		</tr>
+	</table>
+	</form>
+    </div>
+	<script src="/public/js/game.js"></script>
+	<script src="/public/js/add_game.js"></script>
+{% endblock %}
+{% block footericons %}
+    <a href="{{ twitter }}" title="{{ title }} Twitter"><img src = "/public/images/{{ shortname }}/{{ shortname }}_icon.png" alt = "{{ shortname }} logo image" /></a>
+{% endblock %}
