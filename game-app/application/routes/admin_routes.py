@@ -166,3 +166,8 @@ def add_game():
 	mytitle='Adding New Game'
 	return render_template('admin/video_game_add.html',data = [],menu = g.menu[1],menu_title=g.menu_title,title=mytitle,consoles=g.console_query[1],
 	char_data = '',comments = '',pageid=1,nextid=1,nextlimit=1)
+
+@admin_bp.route('/video_games/add_new_game/',methods=['POST'])
+def add_new_game():
+	print(request.get_json())
+	return jsonfiy({"thisdata:","this is the data"})
