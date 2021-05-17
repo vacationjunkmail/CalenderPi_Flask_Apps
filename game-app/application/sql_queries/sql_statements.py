@@ -42,3 +42,10 @@ class app_queries():
 		return '''select v.id,v.name,v.small_image,v.large_image,v.header_image,c.console_shortname 
 				from games.video_games as v inner join games.game_console as c on v.console_id=c.id 
 				where v.name like %s;'''
+	def find_game():
+		return '''select v.id from games.video_games as v inner join games.game_console as c on c.id=v.console_id where lower(v.`name`) = lower(%s) 
+				and c.id = %s;'''
+	def insert_video_game():
+		return 'insert into games.video_games(`name`,console_id,small_image,large_image,header_image,game_description) values(%s,%s,%s,%s,%s,%s);'
+
+

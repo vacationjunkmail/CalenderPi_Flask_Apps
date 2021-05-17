@@ -19,6 +19,21 @@ el.style.display = 'none';
 	document.getElementById("id").value="thisid";
 });
 */
+
+function do_something(results)
+{
+	if(results[0].id == 0)
+	{
+		alert("Already Exists");
+	}
+	else
+	{
+		document.getElementById("id").value=results[0].id;
+		var new_game_btn = document.querySelector('#new_game_btn_row');
+		new_game_btn.style.display = 'none';
+	}
+}
+
 var ready = (callback) => 
 {
 	if(document.readyState != "loading") callback();
@@ -30,26 +45,26 @@ var ready = (callback) =>
 */
 ready(() =>{
 	
-var csrf_token = document.getElementById("csrf_token").value;
-console.log(csrf_token)
+	var csrf_token = document.getElementById("csrf_token").value;
 	var el = document.querySelector('.more_details');
 	el.style.display = 'none';
 	document.querySelector(".add-new-game").addEventListener("click",(e) =>{
 		el.style.display = '';
-		var new_game_btn = document.querySelector('#new_game_btn_row');
-		new_game_btn.style.display = 'none';
+		//var new_game_btn = document.querySelector('#new_game_btn_row');
+		//new_game_btn.style.display = 'none';
 		var title = document.getElementById("title").value;
 		var console_id = document.getElementById("console_id").value;
 		var small_image = document.getElementById("small_image").value;
 		var large_image = document.getElementById("large_image").value;
 		var header_image = document.getElementById("header_image").value;
+		var game_desc = document.getElementById("game_desc").value;
 
-		form_data = {'title':title,'console_id':console_id,'small_image':small_image,'large_image':large_image,'header_image':header_image};
+		form_data = {'title':title,'console_id':console_id,'small_image':small_image,'large_image':large_image,'header_image':header_image,'game_desc':game_desc};
 
 		//event.preventDefault();
 		document.getElementById("id").value="thisid";
 
-		url = "/games/admin/video_games/add_new_game";
+		url = "/games/admin/video_games/add_new_game/";
 		fetch(url,{
 			method:'POST',
 			headers:{
@@ -62,7 +77,7 @@ console.log(csrf_token)
 		.then(validate)
 		.then(getdata)
 		.then(do_something)
-		.catch(handle_error)
+		.catch(showerror)
 
 	});
 	event.preventDefault();

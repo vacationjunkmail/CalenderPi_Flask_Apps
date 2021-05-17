@@ -362,6 +362,7 @@ $(function()
 
 function validate(r)
 {
+	console.log(r);
 	if(!r.ok)
 	{
 		throw Error('Danger Will Robinson');

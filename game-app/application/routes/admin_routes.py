@@ -169,5 +169,23 @@ def add_game():
 
 @admin_bp.route('/video_games/add_new_game/',methods=['POST'])
 def add_new_game():
-	print(request.get_json())
-	return jsonfiy({"thisdata:","this is the data"})
+	fetchapi = request.get_json()
+	params = [fetchapi['title'].strip(),fetchapi['console_id']]
+	statement = app_queries.find_game()
+	data = g.db.select_params(statement,params)
+	if len(data[1]):
+		data[1][0]['id'] = 0
+	else:
+		params.append(fetchapi['small_image'])
+		params.append(fetchapi['large_image'])
+		params.append(fetchapi['header_image'])
+		params.append(fetchapi['game_desc'])
+		statement = app_queries.insert_video_game()
+		data = []
+		data.append([])
+		r = {}
+		r['id'] = 0
+		return_data = g.db.mod_statement(statement,params,'insert')
+		r['id'] = return_data[1].lastrowid
+		data.append([r])
+	return jsonify(data[1])
