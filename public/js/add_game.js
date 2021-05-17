@@ -2,6 +2,7 @@
 el.style.display = 'none';
 */
 
+
 /*document.querySelector(".add-new-game").addEventListener("click",(e) =>{
 	el.style.display = '';
 	var new_game_btn = document.querySelector('#new_game_btn_row');
