@@ -25,13 +25,17 @@ function do_something(results)
 {
 	if(results[0].id == 0)
 	{
-		alert("Already Exists");
+		document.getElementById("modal_title").innerHTML="Already Exists";
+		document.getElementById("modal_body").innerHTML=document.getElementById("title").value+" already exists for selected console";
+		document.getElementById("modalbtn").click();	
 	}
 	else
 	{
 		document.getElementById("id").value=results[0].id;
 		var new_game_btn = document.querySelector('#new_game_btn_row');
 		new_game_btn.style.display = 'none';
+		var el = document.querySelector('.more_details');
+		el.style.display = '';
 	}
 }
 
@@ -50,9 +54,7 @@ ready(() =>{
 	var el = document.querySelector('.more_details');
 	el.style.display = 'none';
 	document.querySelector(".add-new-game").addEventListener("click",(e) =>{
-		el.style.display = '';
-		//var new_game_btn = document.querySelector('#new_game_btn_row');
-		//new_game_btn.style.display = 'none';
+		//el.style.display = '';
 		var title = document.getElementById("title").value;
 		var console_id = document.getElementById("console_id").value;
 		var small_image = document.getElementById("small_image").value;

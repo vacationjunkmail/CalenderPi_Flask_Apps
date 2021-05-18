@@ -435,3 +435,14 @@ if(search_game)
 	event.preventDefault();
 	});
 }
+
+function fade (show) {
+	var para = document.getElementById("show_message");
+  	if(show) {
+    	para.classList.remove("hide");
+    	para.classList.add("show");
+  	} else {
+    	para.classList.remove("show");
+    	para.classList.add("hide");
+	}
+}
