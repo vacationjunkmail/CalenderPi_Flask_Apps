@@ -25,8 +25,9 @@ function do_something(results)
 {
 	if(results[0].id == 0)
 	{
-		document.getElementById("modal_title").innerHTML="Already Exists";
-		document.getElementById("modal_body").innerHTML=document.getElementById("title").value+" already exists for selected console";
+		document.getElementById("modal_title").innerHTML="Warning";
+		var console_option = document.getElementById("console_id");
+		document.getElementById("modal_body").innerHTML=document.getElementById("title").value+" already exists for "+ console_option.options[console_option.selectedIndex].text;
 		document.getElementById("modalbtn").click();	
 	}
 	else
