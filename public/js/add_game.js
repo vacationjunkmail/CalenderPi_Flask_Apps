@@ -34,7 +34,8 @@ function do_something(results)
 	{
 		document.getElementById("id").value=results[0].id;
 		var new_game_btn = document.querySelector('#new_game_btn_row');
-		new_game_btn.style.display = 'none';
+		//new_game_btn.style.display = 'none';
+		new_game_btn.innerHTML = "<td colspan='2' align='center'><a href='../' role='button' class='btn btn-default btn-sm'>Video Game Index</a></td>";
 		var el = document.querySelector('.more_details');
 		el.style.display = '';
 	}
