@@ -1,8 +1,9 @@
-from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redirect
-from flask import current_app as app, flash,jsonify
+from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redirect,flash
+#from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
 from application.sql_queries.sql_statements import app_queries
 import requests
+from application.decorators.login import login_required
 #import mysql_conn
 admin_bp = Blueprint('admin_bp',__name__,static_folder='static')
 
@@ -22,6 +23,7 @@ def after_request(resp):
 	return resp
 
 @admin_bp.route('/',methods=['GET'])
+@login_required
 def home():
 	return render_template('admin/admin_index.html', title='Admin Home',menu=g.menu[1],menu_title=g.menu_title)
 

@@ -1,5 +1,5 @@
-from flask import Blueprint,render_template,g,request,jsonify
-from flask import current_app as app
+from flask import Blueprint,render_template,g,request,jsonify,session,current_app as app
+#from flask import current_app as app
 from application.sql_queries.sql_statements import app_queries
 #sys.path.insert(-1,'/usr/local/lib/python3.7/site-packages')
 from mysql_conn.connect_mysql import get_connection
@@ -23,7 +23,7 @@ def after_request(resp):
 
 @auth_bp.route('/',methods=['GET'])
 @auth_bp.route('/login/',methods=['GET'])
-def home():
+def login():
 	#item = random.randrange(0,len(g.menu[1]),1)
 	#sn = g.menu[1][item]['console_shortname']
 	#query = '''select c.id as console_id,v.id,v.name,v.small_image,v.large_image 
@@ -33,7 +33,11 @@ def home():
 	#game_len = random.randrange(0,len(results[1]),)
 	return render_template('auth/index.html',title='Login',body='home',menu_title = g.menu_title)
 
+@auth_bp.route('/login_check/',methods=['POST'])
+def login_check():
+	return 'you made it to the post'
+
 @auth_bp.route('/logout/',methods=['GET'])
-def two():
+def logout():
 	return 'This is dfact/two route'
 
