@@ -35,9 +35,19 @@ def login():
 
 @auth_bp.route('/login_check/',methods=['POST'])
 def login_check():
-	return 'you made it to the post'
+	statement = app_queries.verify_user()
+	params = [request.form['username'],request.form['password']]
+	results = g.db.select_params(statement,params)
+	if results:
+		for row in results[1]:
+			session['id']= row['id']
+	print(session)
+	session.clear()
+			
+	return request.method
 
 @auth_bp.route('/logout/',methods=['GET'])
 def logout():
+	session.clear()
 	return 'This is dfact/two route'
 

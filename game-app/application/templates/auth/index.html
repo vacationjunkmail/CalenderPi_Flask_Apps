@@ -4,7 +4,8 @@
 {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="/public/css/login2.css" />
-	<form>
+	<form action="../login_check/" method="post">
+	<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token()  }}" />
     <div class="auth-wrapper">
         <div class="auth-content container">
             <div class="card">
@@ -17,13 +18,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="feather icon-mail"></i></span>
                                 </div>
-                                <input type="email" class="form-control" placeholder="Email address">
+                                <input type="text" class="form-control" placeholder="username" name="username" id="username">
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="feather icon-lock"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input type="password" class="form-control" placeholder="Password" name="password" id="password">
                             </div>
                             <!--
 							<button class="btn btn-facebook mb-2 mr-2"><i class="fab fa-facebook-f"></i>facebook</button>

@@ -48,4 +48,5 @@ class app_queries():
 	def insert_video_game():
 		return 'insert into games.video_games(`name`,console_id,small_image,large_image,header_image,game_description) values(%s,%s,%s,%s,%s,%s);'
 
-
+	def verify_user():
+		return 'select id from auth_users.users where username=%s and pwd=%s';
