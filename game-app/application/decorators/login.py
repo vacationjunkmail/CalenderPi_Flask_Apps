@@ -7,7 +7,6 @@ from urllib.parse import urlparse
 def login_required(f):
 	@wraps(f)
 	def wrap(*args,**kwargs):
-		print("here")
 		if 'user-token' in session:
 			return f(*args,**kwargs)
 		else:
