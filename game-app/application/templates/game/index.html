@@ -9,6 +9,14 @@
         <h1 id="hero-title">{{ title }}</h1>
     </div>
     <div id="posters-wrapper" class="content-padding clearfix">
+    	{% with messages = get_flashed_messages() %}
+        	{% if messages %}
+            	{% for message in messages %}
+                	<div class="alert alert-warning">{{ message }}</div>
+	            {% endfor %}
+    	    {% endif %}
+	    {% endwith %}
+
         {% for row in menu %}
 	    <div class="poster-consoles">
 	        <a href="{{ row['id'] }}/">

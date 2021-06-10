@@ -36,16 +36,13 @@ def login_check():
 		session['user-token'] = uuid.uuid4()
 		return redirect(url_for('admin_bp.home'))
 	else:
-		print(uuid.uuid4())
+		session.clear()
 		flash('Something went wrong')
 		return render_template('auth/index.html',title='Login',body='',menu_title = g.menu_title)
-	print(session)
-	session.clear()
 			
-	return request.method
-
 @auth_bp.route('/logout/',methods=['GET'])
 def logout():
 	session.clear()
-	return 'This is dfact/two route'
+	flash('Logout Complete!')
+	return redirect(url_for('game_bp.home'))
 

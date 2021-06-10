@@ -1,5 +1,5 @@
-from flask import Blueprint,render_template,g,request,jsonify
-from flask import current_app as app
+from flask import Blueprint,render_template,g,request,jsonify,flash,current_app as app
+#from flask import current_app as app
 from application.sql_queries.sql_statements import app_queries
 #sys.path.insert(-1,'/usr/local/lib/python3.7/site-packages')
 from mysql_conn.connect_mysql import get_connection

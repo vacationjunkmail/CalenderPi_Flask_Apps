@@ -1,5 +1,4 @@
 from flask import Blueprint,render_template,g,jsonify,json,request,url_for,redirect,flash
-#from flask import current_app as app, flash,jsonify
 from mysql_conn.connect_mysql import get_connection
 from application.sql_queries.sql_statements import app_queries
 import requests
@@ -29,6 +28,7 @@ def home():
 
 @admin_bp.route('/<string:url_route>/<int:pageid>/',methods=['GET','POST'])
 @admin_bp.route('/<string:url_route>/',methods=['GET','POST'])
+@login_required
 def base_index(url_route,pageid=0):
 	#pageid = 0
 	if request.method == 'POST':
@@ -191,3 +191,7 @@ def add_new_game():
 		r['id'] = return_data[1].lastrowid
 		data.append([r])
 	return jsonify(data[1])
+
+@admin_bp.route('/logout/',methods=['GET'])
+def logout():
+	return redirect(url_for('auth_bp.logout'))
