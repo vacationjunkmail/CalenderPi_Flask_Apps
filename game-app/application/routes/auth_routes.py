@@ -3,9 +3,9 @@ from flask import Blueprint,render_template,g,request,jsonify,session,current_ap
 from application.sql_queries.sql_statements import app_queries
 #sys.path.insert(-1,'/usr/local/lib/python3.7/site-packages')
 from mysql_conn.connect_mysql import get_connection
-import base64
+import base64,uuid,datetime
 from pathlib import Path
-import uuid
+from pytz import timezone
 
 auth_bp = Blueprint('auth_bp',__name__,static_folder='static')
 
@@ -22,7 +22,11 @@ def after_request(resp):
 @auth_bp.route('/',methods=['GET'])
 @auth_bp.route('/login/',methods=['GET'])
 def login():
-	return render_template('auth/index.html',title='Login',body='home',menu_title = g.menu_title)
+	next_url = ''
+	if 'next' in session:
+		next_url = session['next']
+		session.pop('next')
+	return render_template('auth/index.html',title='Login',body='home',menu_title = g.menu_title,next_url=next_url)
 
 @auth_bp.route('/login_check/',methods=['POST'])
 def login_check():
@@ -34,7 +38,13 @@ def login_check():
 			session['id']= row['id']
 			session['username'] = request.form['username']
 		session['user-token'] = uuid.uuid4()
-		return redirect(url_for('admin_bp.home'))
+		session['login_time'] = datetime.datetime.now(timezone('utc'))
+		session['timestamp'] = session['login_time'].timestamp()
+		next_url = request.form.get('next_url')
+		if next_url:
+			return redirect(next_url)
+		else:
+			return redirect(url_for('admin_bp.home'))
 	else:
 		session.clear()
 		flash('Something went wrong')
