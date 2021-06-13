@@ -56,6 +56,5 @@ def logout():
 		flash(session['expired'])
 	session.clear()
 	flash('Logout Complete!')
-	flash('dana')
 	return redirect(url_for('game_bp.home'))
 
