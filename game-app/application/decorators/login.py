@@ -1,12 +1,17 @@
 import time, socket, re
 from functools import wraps
-
-from flask import session,redirect,url_for,request,g,current_app as app
+from application.functions import time_difference
+from flask import session,redirect,url_for,request,g,current_app as app,flash
 from urllib.parse import urlparse
 
 def login_required(f):
 	@wraps(f)
 	def wrap(*args,**kwargs):
+		if 'login_time' in session:
+			minutes_passed = time_difference.diff_minutes(session['login_time'])
+			if minutes_passed > 30:
+				session['expired'] = "Session expired"
+				return redirect(url_for('auth_bp.logout'))
 		if 'user-token' in session:
 			return f(*args,**kwargs)
 		else:

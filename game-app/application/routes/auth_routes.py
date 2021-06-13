@@ -38,8 +38,8 @@ def login_check():
 			session['id']= row['id']
 			session['username'] = request.form['username']
 		session['user-token'] = uuid.uuid4()
-		session['login_time'] = datetime.datetime.now(timezone('utc'))
-		session['timestamp'] = session['login_time'].timestamp()
+		utc = timezone('utc')
+		session['login_time'] = datetime.datetime.now(utc)
 		next_url = request.form.get('next_url')
 		if next_url:
 			return redirect(next_url)
@@ -52,6 +52,8 @@ def login_check():
 			
 @auth_bp.route('/logout/',methods=['GET'])
 def logout():
+	if 'expires' in session:
+		flash(session['expired'])
 	session.clear()
 	flash('Logout Complete!')
 	return redirect(url_for('game_bp.home'))
