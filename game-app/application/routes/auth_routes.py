@@ -52,9 +52,10 @@ def login_check():
 			
 @auth_bp.route('/logout/',methods=['GET'])
 def logout():
-	if 'expires' in session:
+	if 'expired' in session:
 		flash(session['expired'])
 	session.clear()
 	flash('Logout Complete!')
+	flash('dana')
 	return redirect(url_for('game_bp.home'))
 
