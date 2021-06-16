@@ -1,6 +1,6 @@
 import time, socket, re
 from functools import wraps
-from application.functions import time_difference
+from application.functions import login_functions
 from flask import session,redirect,url_for,request,g,current_app as app,flash
 from urllib.parse import urlparse
 
@@ -8,7 +8,7 @@ def login_required(f):
 	@wraps(f)
 	def wrap(*args,**kwargs):
 		if 'login_time' in session:
-			minutes_passed = time_difference.diff_minutes(session['login_time'])
+			minutes_passed = login_functions.diff_minutes(session['login_time'])
 			if minutes_passed > 30:
 				session['expired'] = "Session expired"
 				return redirect(url_for('auth_bp.logout'))
@@ -19,7 +19,7 @@ def login_required(f):
 				#print(rule.rule)
 			#for item in app.blueprints:
 				#print(item)
-			session['next'] = re.sub(r':\d{4}','',request.url)
+			d = login_functions.host_regex(app.config['IP'],request.url)
 			return redirect(url_for('auth_bp.login'))
 	return wrap
 
