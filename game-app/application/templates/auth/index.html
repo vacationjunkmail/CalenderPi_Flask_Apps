@@ -1,62 +1,44 @@
-{% extends "layout.html" %}
-{% block title %}
-	{{ title }}
-{% endblock %}
-{% block content %}
-	<link rel="stylesheet" href="/public/css/login2.css" />
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-    		<ul class=flashes>
-    			{% for message in messages %}
-      				<li>{{ message }}</li>
-    			{% endfor %}
-    		</ul>
-		{% endif %}
-	{% endwith %}
-	<form action="../login_check/" method="post">
-	<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token()  }}" />
-	<input type="hidden" name="next_url" id="next_url" value = "{{ next_url }}" />
-    <div class="auth-wrapper">
-        <div class="auth-content container">
-            <div class="card">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <img src="../assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
-                            <h4 class="mb-3 f-w-400">Login</h4>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="feather icon-mail"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="username" name="username" id="username">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="feather icon-lock"></i></span>
-                                </div>
-                                <input type="password" class="form-control" placeholder="Password" name="password" id="password">
-                            </div>
-                            <!--
-							<button class="btn btn-facebook mb-2 mr-2"><i class="fab fa-facebook-f"></i>facebook</button>
-                            <button class="btn btn-googleplus mb-2 mr-2"><i class="fab fa-google-plus-g"></i>Google</button>
-                            <button class="btn btn-twitter mb-2 mr-2"><i class="fab fa-twitter"></i>Twitter</button>
-							-->
-							<br />
-                            <button class="btn btn-primary shadow-2 mb-4">Login</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-none d-md-block">
-                    </div>
-                </div>
-            </div>
-            <!--<div class="footer mt-5">
-                <p class="text-center">Made with <i class="fas fa-heart"></i> by <a href="https://codedthemes.com/" target="_blank">Codedthemes</a></p>
-            </div>-->
-        </div>
-    </div>
-	</form>
-    <!-- Required Js -->
-    <script src="/public/js/jquery/jquery.js"></script>
-    <!---<script src="../assets/js/popper.min.js"></script>
-    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>-->
-{%  endblock %}
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>Login Game Consoles</title>
+		<link rel="stylesheet" href="/public/css/bootstrap.css">
+		<link rel="stylesheet" href="/public/css/dashboard.css">
+	</head>
+	<body>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+    			<ul class=flashes>
+    				{% for message in messages %}
+      					<li>{{ message }}</li>
+	    			{% endfor %}
+    			</ul>
+			{% endif %}
+		{% endwith %}
+		<div class="dashboard-inner">
+		<div class="Dashboard_ind" style="overflow-x:auto;">
+		<form action="../login_check/" method="post">
+			<table>
+				<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token()  }}" />
+				<input type="hidden" name="next_url" id="next_url" value = "{{ next_url }}" />
+				<tr><td>
+				<label for="username">Username:</label>
+                <input type="text" placeholder="Enter Username" name="username" id="username">
+				</td></tr>
+				<tr><td>
+                <label for="password">Password:</label>
+				<input type="password" placeholder="Enter Password" name="password" id="password">
+				</td></tr>
+				<tr><td>
+                <button class="btn btn-primary">Login</button>
+				</td></tr>
+			</table>
+		</form>
+		</div>
+</div>
+	    <!-- Required Js -->
+    	<script src="/public/js/jquery/jquery.js"></script>
+	</body>
+</html>
