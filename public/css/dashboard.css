@@ -53,14 +53,19 @@ table td, table th, table tr {
         min-width: 340px;
     }
 }
-@media (max-width: 768px){
-    .dashboard-inner {
-        flex-direction: column;
+@media (max-width: 768px)
+{
+	.dashboard-inner 
+	{
+    	flex-direction: column;
     }
-    .dashboard-inner button {
+
+    .dashboard-inner button 
+	{
         width: 85px;
-        height: 75px;
+    	height: 75px;
     }
+
     .Dashboard_ind {
         min-width: inherit;
     }
