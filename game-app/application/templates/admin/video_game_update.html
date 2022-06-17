@@ -25,7 +25,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><label for="small_image">Page Image:</label> 
+			<td colspan="2"><label for="small_image">Game Cover:</label> 
 				<input typee="text" name="small_image" id="small_image" value="{{ data[0]['small_image'] }}" size="45" />
 				{% if data[0]['small_image'] and data[0]['small_image'] | length %}
 					<a href="/public/images/{{ myconsole.console }}/small/{{ data[0]['small_image'] }}" data-lightbox="image_group" data-title="{{ data[0]['name'] }}">View Image</a>
@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><label for="large_image">Front Image: </label>
+			<td colspan="2"><label for="large_image">Game Scene: </label>
 				<input type="text" name="large_image" id="large_image" value="{{ data[0]['large_image'] }}" size="45" />
 				{% if data[0]['large_image'] and data[0]['large_image'] | length %}
 					<a href="/public/images/{{ myconsole.console }}/large/{{ data[0]['large_image'] }}" data-lightbox="image_group" data-title="{{ data[0]['name'] }}">View Image</a>
@@ -41,7 +41,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><label for="header_image">Header Image:</label> 
+			<td colspan="2"><label for="header_image">Game Header:</label> 
 				<input type="text" name="header_image" id="header_image" value="{{ data[0]['header_image'] }}" size="45" />
 				{% if data[0]['header_image'] and data[0]['header_image'] | length %}
 					<a href="/public/images/{{ myconsole.console }}/header/{{ data[0]['header_image'] }}" data-lightbox="image_group" data-title="{{ data[0]['name'] }}">View Image</a>
